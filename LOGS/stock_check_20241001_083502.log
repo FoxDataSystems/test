@@ -1,0 +1,449 @@
+2024-10-01 08:35:02,563 - INFO - Starting stock check
+2024-10-01 08:35:02,565 - INFO - Checking stock for NL Ninja
+2024-10-01 08:35:02,566 - INFO - Processing URLs...
+2024-10-01 08:35:14,419 - INFO - Updated 2 out-of-stock products for NL Ninja
+2024-10-01 08:35:14,463 - INFO - Updated 24 in-stock products for NL Ninja
+2024-10-01 08:35:14,516 - INFO - New price recorded for ProductID 5. Price: 169.99
+2024-10-01 08:35:14,517 - INFO - Price unchanged for ProductID 23. Current: 24.99
+2024-10-01 08:35:14,518 - INFO - New price recorded for ProductID 1. Price: 156.99
+2024-10-01 08:35:14,520 - INFO - Price unchanged for ProductID 2. Current: 209.0
+2024-10-01 08:35:14,521 - INFO - Price unchanged for ProductID 3. Current: 199.99
+2024-10-01 08:35:14,521 - INFO - New price recorded for ProductID 4. Price: 145.99
+2024-10-01 08:35:14,522 - INFO - New price recorded for ProductID 6. Price: 199.99
+2024-10-01 08:35:14,523 - INFO - New price recorded for ProductID 7. Price: 189.99
+2024-10-01 08:35:14,524 - INFO - Price unchanged for ProductID 8. Current: 99.99
+2024-10-01 08:35:14,525 - INFO - Price unchanged for ProductID 9. Current: 120.99
+2024-10-01 08:35:14,526 - INFO - New price recorded for ProductID 10. Price: 99.99
+2024-10-01 08:35:14,528 - INFO - New price recorded for ProductID 11. Price: 119.99
+2024-10-01 08:35:14,529 - INFO - Price unchanged for ProductID 12. Current: 160.99
+2024-10-01 08:35:14,530 - INFO - Price unchanged for ProductID 13. Current: 250.99
+2024-10-01 08:35:14,532 - INFO - Price unchanged for ProductID 14. Current: 293.99
+2024-10-01 08:35:14,534 - INFO - New price recorded for ProductID 15. Price: 279.99
+2024-10-01 08:35:14,536 - INFO - Price unchanged for ProductID 16. Current: 349.99
+2024-10-01 08:35:14,537 - INFO - New price recorded for ProductID 17. Price: 299.99
+2024-10-01 08:35:14,539 - INFO - Price unchanged for ProductID 18. Current: 118.99
+2024-10-01 08:35:14,539 - INFO - Price unchanged for ProductID 19. Current: 98.99
+2024-10-01 08:35:14,540 - INFO - Price unchanged for ProductID 20. Current: 52.99
+2024-10-01 08:35:14,541 - INFO - New price recorded for ProductID 21. Price: 163.99
+2024-10-01 08:35:14,541 - INFO - Price unchanged for ProductID 22. Current: 109.99
+2024-10-01 08:35:14,542 - INFO - Price unchanged for ProductID 24. Current: 24.99
+2024-10-01 08:35:14,544 - INFO - Price unchanged for ProductID 25. Current: 24.99
+2024-10-01 08:35:14,545 - INFO - Price unchanged for ProductID 26. Current: 52.99
+2024-10-01 08:35:14,553 - INFO - Saved product status and prices for 26 products for NL Ninja
+2024-10-01 08:35:14,553 - INFO - No URLs were skipped in the end for NL Ninja
+2024-10-01 08:35:14,553 - INFO - Finished checking NL Ninja
+2024-10-01 08:35:14,553 - INFO - -----------------------------------
+2024-10-01 08:35:14,553 - INFO - Checking stock for BE Shark
+2024-10-01 08:35:14,553 - INFO - Processing URLs...
+2024-10-01 08:35:17,203 - ERROR - Error fetching https://sharkclean.be/product/shark-draadloze-detect-pro-stofzuiger-iw1611eu-zidIW1611EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:35:22,358 - ERROR - Error fetching https://sharkclean.be/product/shark-anti-hair-wrap-snoerloze-steelstofzuiger-met-flexology-enkele-accu-iz201eu-zidIZ201EU: HTTPSConnectionPool(host='sharkclean.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:35:26,484 - ERROR - Error fetching https://sharkclean.be/product/shark-stoommop-s1000eu-zidS1000EU: HTTPSConnectionPool(host='sharkclean.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:35:29,637 - ERROR - Error fetching https://sharkclean.be/product/shark-speedstyle-rapidgloss-finisher-en-haardroger-met-hoge-snelheid-voor-krullen-en-kroeshaar-hd334eu-zidHD334EU: HTTPSConnectionPool(host='sharkclean.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:35:33,413 - ERROR - Error fetching https://sharkclean.be/product/shark-smoothstyle-verwarmde-borstel-en-gladmakende-kam-ht202eu-zidHT202EU: HTTPSConnectionPool(host='sharkclean.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:35:33,413 - INFO - Rerunning 5 skipped URLs...
+2024-10-01 08:35:37,028 - ERROR - Error fetching https://sharkclean.be/product/shark-smoothstyle-verwarmde-borstel-en-gladmakende-kam-ht202eu-zidHT202EU: HTTPSConnectionPool(host='sharkclean.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:35:37,028 - INFO - Re-rerunning 1 skipped URLs...
+2024-10-01 08:35:37,185 - INFO - Updated 3 out-of-stock products for BE Shark
+2024-10-01 08:35:37,214 - INFO - Updated 18 in-stock products for BE Shark
+2024-10-01 08:35:37,236 - INFO - Price unchanged for ProductID 28. Current: 211.99
+2024-10-01 08:35:37,236 - INFO - Price unchanged for ProductID 31. Current: 129.99
+2024-10-01 08:35:37,237 - INFO - Price unchanged for ProductID 32. Current: 249.99
+2024-10-01 08:35:37,237 - INFO - Price unchanged for ProductID 27. Current: 322.99
+2024-10-01 08:35:37,238 - INFO - Price unchanged for ProductID 29. Current: 379.99
+2024-10-01 08:35:37,238 - INFO - Price unchanged for ProductID 48. Current: 187.99
+2024-10-01 08:35:37,239 - INFO - Price unchanged for ProductID 42. Current: 299.99
+2024-10-01 08:35:37,239 - INFO - Price unchanged for ProductID 34. Current: 304.99
+2024-10-01 08:35:37,239 - INFO - Price unchanged for ProductID 36. Current: 349.99
+2024-10-01 08:35:37,240 - INFO - Price unchanged for ProductID 37. Current: 73.99
+2024-10-01 08:35:37,240 - INFO - Price unchanged for ProductID 39. Current: 179.99
+2024-10-01 08:35:37,241 - INFO - Price unchanged for ProductID 41. Current: 199.99
+2024-10-01 08:35:37,241 - INFO - Price unchanged for ProductID 43. Current: 129.99
+2024-10-01 08:35:37,242 - INFO - Price unchanged for ProductID 44. Current: 109.99
+2024-10-01 08:35:37,242 - INFO - Price unchanged for ProductID 45. Current: 99.99
+2024-10-01 08:35:37,243 - INFO - Price unchanged for ProductID 47. Current: 189.99
+2024-10-01 08:35:37,243 - INFO - Price unchanged for ProductID 30. Current: 197.99
+2024-10-01 08:35:37,243 - INFO - Price unchanged for ProductID 35. Current: 249.99
+2024-10-01 08:35:37,244 - INFO - Price unchanged for ProductID 38. Current: 79.99
+2024-10-01 08:35:37,244 - INFO - Price unchanged for ProductID 40. Current: 179.99
+2024-10-01 08:35:37,245 - INFO - Price unchanged for ProductID 46. Current: 79.99
+2024-10-01 08:35:37,245 - INFO - Saved product status and prices for 21 products for BE Shark
+2024-10-01 08:35:37,245 - INFO - No URLs were skipped in the end for BE Shark
+2024-10-01 08:35:37,245 - INFO - Finished checking BE Shark
+2024-10-01 08:35:37,245 - INFO - -----------------------------------
+2024-10-01 08:35:37,245 - INFO - Checking stock for NL Shark
+2024-10-01 08:35:37,246 - INFO - Processing URLs...
+2024-10-01 08:35:49,940 - INFO - Updated 3 out-of-stock products for NL Shark
+2024-10-01 08:35:49,963 - INFO - Updated 17 in-stock products for NL Shark
+2024-10-01 08:35:49,984 - INFO - Price unchanged for ProductID 31. Current: 129.99
+2024-10-01 08:35:49,984 - INFO - Price unchanged for ProductID 32. Current: 249.99
+2024-10-01 08:35:49,984 - INFO - Price unchanged for ProductID 28. Current: 211.99
+2024-10-01 08:35:49,984 - INFO - Price unchanged for ProductID 29. Current: 365.99
+2024-10-01 08:35:49,988 - INFO - Price unchanged for ProductID 34. Current: 304.99
+2024-10-01 08:35:49,988 - INFO - Price unchanged for ProductID 30. Current: 197.99
+2024-10-01 08:35:49,988 - INFO - Price unchanged for ProductID 35. Current: 249.99
+2024-10-01 08:35:49,988 - INFO - Price unchanged for ProductID 36. Current: 349.99
+2024-10-01 08:35:49,988 - INFO - Price unchanged for ProductID 37. Current: 79.99
+2024-10-01 08:35:49,988 - INFO - Price unchanged for ProductID 38. Current: 79.99
+2024-10-01 08:35:49,991 - INFO - Price unchanged for ProductID 39. Current: 179.99
+2024-10-01 08:35:49,991 - INFO - Price unchanged for ProductID 40. Current: 179.99
+2024-10-01 08:35:49,992 - INFO - Price unchanged for ProductID 41. Current: 199.99
+2024-10-01 08:35:49,992 - INFO - Price unchanged for ProductID 42. Current: 289.99
+2024-10-01 08:35:49,993 - INFO - Price unchanged for ProductID 27. Current: 319.99
+2024-10-01 08:35:49,993 - INFO - Price unchanged for ProductID 43. Current: 125.99
+2024-10-01 08:35:49,993 - INFO - Price unchanged for ProductID 44. Current: 105.99
+2024-10-01 08:35:49,994 - INFO - Price unchanged for ProductID 45. Current: 119.99
+2024-10-01 08:35:49,994 - INFO - Price unchanged for ProductID 46. Current: 86.99
+2024-10-01 08:35:49,995 - INFO - Price unchanged for ProductID 47. Current: 148.99
+2024-10-01 08:35:49,995 - INFO - Saved product status and prices for 20 products for NL Shark
+2024-10-01 08:35:49,995 - INFO - No URLs were skipped in the end for NL Shark
+2024-10-01 08:35:49,995 - INFO - Finished checking NL Shark
+2024-10-01 08:35:49,995 - INFO - -----------------------------------
+2024-10-01 08:35:49,995 - INFO - Checking stock for BE Ninja
+2024-10-01 08:35:49,996 - INFO - Processing URLs...
+2024-10-01 08:35:53,039 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-creami-ice-cream-frozen-dessert-maker-nc300eu-zidNC300EU: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:35:53,451 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-foodi-dual-zone-airfryer-af300eu-zidAF300EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:35:57,637 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-airfryer-max-pro-6-2-liter-af180eu-zidAF180EU: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:36:04,280 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-2-in-1-blender-met-auto-iq-bn750eu-zidBN750EU: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:36:07,338 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-blender-met-auto-iq-bn495eu-zidBN495EU: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:36:09,479 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-foodi-max-dual-zone-air-fryer-with-smart-cook-system-af451eu-zidAF451EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:36:12,502 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-foodi-max-9-in-1-multi-cooker-7-5l-op500eu-zidOP500EU: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:36:15,635 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-woodfire-buitenoven-pizzamaker-en-bbq-rookoven-zidOO101EU: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:36:22,206 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-ijsmachines-dessertbakken-set-van-2-nc501eu-zidXSKPNTLD2: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:36:22,474 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-ijsmachines-dessertbakken-set-van-4-zidXSKPNTLID4EUK: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:36:24,232 - INFO - Rerunning 10 skipped URLs...
+2024-10-01 08:36:27,275 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-creami-ice-cream-frozen-dessert-maker-nc300eu-zidNC300EU: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:36:33,566 - INFO - Re-rerunning 1 skipped URLs...
+2024-10-01 08:36:36,611 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-creami-ice-cream-frozen-dessert-maker-nc300eu-zidNC300EU: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:36:36,627 - INFO - Updated 2 out-of-stock products for BE Ninja
+2024-10-01 08:36:36,660 - INFO - Updated 23 in-stock products for BE Ninja
+2024-10-01 08:36:36,685 - INFO - Price unchanged for ProductID 5. Current: 159.99
+2024-10-01 08:36:36,685 - INFO - Price unchanged for ProductID 23. Current: 24.99
+2024-10-01 08:36:36,685 - INFO - Price unchanged for ProductID 3. Current: 199.99
+2024-10-01 08:36:36,686 - INFO - Price unchanged for ProductID 7. Current: 184.99
+2024-10-01 08:36:36,686 - INFO - Price unchanged for ProductID 8. Current: 94.99
+2024-10-01 08:36:36,687 - INFO - Price unchanged for ProductID 10. Current: 99.99
+2024-10-01 08:36:36,687 - INFO - Price unchanged for ProductID 12. Current: 169.99
+2024-10-01 08:36:36,688 - INFO - Price unchanged for ProductID 14. Current: 293.99
+2024-10-01 08:36:36,688 - INFO - Price unchanged for ProductID 15. Current: 264.99
+2024-10-01 08:36:36,689 - INFO - Price unchanged for ProductID 16. Current: 359.99
+2024-10-01 08:36:36,689 - INFO - Price unchanged for ProductID 20. Current: 52.99
+2024-10-01 08:36:36,690 - INFO - Price unchanged for ProductID 21. Current: 162.99
+2024-10-01 08:36:36,690 - INFO - Price unchanged for ProductID 22. Current: 109.99
+2024-10-01 08:36:36,690 - INFO - Price unchanged for ProductID 9. Current: 103.99
+2024-10-01 08:36:36,691 - INFO - Price unchanged for ProductID 2. Current: 209.99
+2024-10-01 08:36:36,691 - INFO - Price unchanged for ProductID 26. Current: 52.99
+2024-10-01 08:36:36,692 - INFO - Price unchanged for ProductID 24. Current: 24.99
+2024-10-01 08:36:36,692 - INFO - Price unchanged for ProductID 4. Current: 139.99
+2024-10-01 08:36:36,692 - INFO - Price unchanged for ProductID 11. Current: 119.99
+2024-10-01 08:36:36,693 - INFO - Price unchanged for ProductID 18. Current: 112.99
+2024-10-01 08:36:36,693 - INFO - Price unchanged for ProductID 19. Current: 98.99
+2024-10-01 08:36:36,694 - INFO - Price unchanged for ProductID 6. Current: 199.99
+2024-10-01 08:36:36,694 - INFO - Price unchanged for ProductID 13. Current: 250.99
+2024-10-01 08:36:36,695 - INFO - Price unchanged for ProductID 17. Current: 301.99
+2024-10-01 08:36:36,695 - INFO - Price unchanged for ProductID 25. Current: 24.99
+2024-10-01 08:36:36,695 - INFO - Saved product status and prices for 25 products for BE Ninja
+2024-10-01 08:36:36,695 - WARNING - The following URLs were skipped for BE Ninja:
+2024-10-01 08:36:36,695 - WARNING - https://ninjakitchen.be/product/ninja-creami-ice-cream-frozen-dessert-maker-nc300eu-zidNC300EU
+2024-10-01 08:36:36,695 - WARNING - 1 URLs were skipped after retrying for BE Ninja
+2024-10-01 08:36:36,695 - WARNING - 10 URLs were skipped after retrying for BE Ninja
+2024-10-01 08:36:36,695 - INFO - Finished checking BE Ninja
+2024-10-01 08:36:36,695 - INFO - -----------------------------------
+2024-10-01 08:36:36,695 - INFO - Checking stock for FR Ninja
+2024-10-01 08:36:36,695 - INFO - Processing URLs...
+2024-10-01 08:36:42,140 - ERROR - Error fetching https://ninjakitchen.fr/produits/friteuse-sans-huile-ninja-foodi-af300eu-double-compartiment-air-fryer-7-6l-zidAF300EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:36:47,784 - ERROR - Error fetching https://ninjakitchen.fr/produits/ninja-speedi-10-en-1-rapid-cooker-air-fryer-on400eu-zidON400EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:36:52,253 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-ninja-foodi-mini-op100eu-6-en-1-4-7l-zidOP100EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:37:02,655 - ERROR - Error fetching https://ninjakitchen.fr/produits/mini-four-multifonction-10-en-1-ninja-foodi-dt200eu-zidDT200EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:37:04,534 - ERROR - Error fetching https://ninjakitchen.fr/produits/friteuse-sans-huile-ninja-pro-4-7-l-af140eu-zidAF140EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:37:10,683 - ERROR - Error fetching https://ninjakitchen.fr/produits/friteuse-sans-huile-ninja-foodi-flex-10-4-l-af500eu-reconditionne-etat-excellent-zidAF500EUREF: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:37:13,727 - ERROR - Error fetching https://ninjakitchen.fr/produits/friteuse-sans-huile-air-fryer-ninja-reconditionne-af100euref-etat-excellent-zidAF100EUREF: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:37:16,789 - ERROR - Error fetching https://ninjakitchen.fr/produits/friteuse-sans-huile-ninja-foodi-dualzone-7-6-l-reconditionne-af300euref-etat-excellent-zidAF300EUREF: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:37:32,514 - ERROR - Error fetching https://ninjakitchen.fr/produits/la-fabrique-a-delices-glaces-ninja-creami-reconditionne-nc300eurefa-tres-bon-etat-zidNC300EUREFA: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:37:33,976 - ERROR - Error fetching https://ninjakitchen.fr/produits/friteuse-sans-huile-ninja-foodi-max-dualzone-9-5l-reconditionne-af400eurefb-etat-correct-zidAF400EUREFB: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:37:36,800 - ERROR - Error fetching https://ninjakitchen.fr/produits/blender-3-en-1-ninja-foodi-power-nutri-reconditionne-cb350eu-etat-correct-zidCB350EUREFB: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:37:41,327 - ERROR - Error fetching https://ninjakitchen.fr/produits/poele-ninja-foodi-zerostick-24-cm-c30024eu-zidC30024EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:37:49,223 - ERROR - Error fetching https://ninjakitchen.fr/produits/poele-20-cm-en-inox-ninja-foodi-zerostick-c60020eu-zidC60020EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:37:52,431 - ERROR - Error fetching https://ninjakitchen.fr/produits/extracteur-de-jus-ninja-jc100eu-zidJC100EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:38:01,461 - ERROR - Error fetching https://ninjakitchen.fr/produits/wok-ninja-foodi-zerostick-28-cm-avec-couvercle-c30928eu-zidC30928EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:38:04,880 - ERROR - Error fetching https://ninjakitchen.fr/produits/grille-pain-3-en-1-inox-ninja-foodi-st202eu-zidST202EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:38:07,316 - ERROR - Error fetching https://ninjakitchen.fr/produits/ninja-speedi-10-en-1-rapid-cooker-air-fryer-on400eu-reconditionne-etat-excellent-zidON400EUREF: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:38:10,003 - ERROR - Error fetching https://ninjakitchen.fr/produits/robot-de-cuisine-ninja-avec-auto-iq-reconditionne-bn650eu-etat-excellent-zidBN650EUREF: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:38:13,050 - ERROR - Error fetching https://ninjakitchen.fr/produits/blender-smoothie-nutri-ninja-700w-reconditionne-qb3001eus-etat-excellent-zidQB3001EUSREF: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:38:19,437 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-tres-bon-etat-zidOL650EUREFA: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:38:25,766 - ERROR - Error fetching https://ninjakitchen.fr/produits/grill-d-interieur-friteuse-ninja-foodi-reconditionne-ag301eurefb-etat-correct-zidAG301EUREFB: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:38:28,815 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-etat-correct-zidOL650EUREFB: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:38:34,127 - ERROR - Error fetching https://ninjakitchen.fr/produits/barbecue-electrique-et-fumoir-ninja-woodfire-pro-xl-avec-thermosonde-smart-cook-og850eu-zidOG850EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:38:37,179 - ERROR - Error fetching https://ninjakitchen.fr/produits/barbecue-electrique-et-fumoir-ninja-woodfire-pro-connect-xl-og901eu-zidOG901EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:38:48,631 - ERROR - Error fetching https://ninjakitchen.fr/produits/poele-28-cm-en-inox-ninja-foodi-zerostick-c60028eu-zidC60028EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:38:52,714 - ERROR - Error fetching https://ninjakitchen.fr/produits/batterie-de-cuisine-3-pieces-en-inox-ninja-foodi-zerostick-c63000eu-zidC63000EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:38:52,760 - ERROR - Error fetching https://ninjakitchen.fr/produits/batterie-de-cuisine-empilable-5-pieces-ninja-foodi-zerostick-c55000eu-zidC55000EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:38:55,810 - ERROR - Error fetching https://ninjakitchen.fr/produits/poele-empilable-28-cm-ninja-foodi-zerostick-c50028eu-zidC50028EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:39:01,011 - ERROR - Error fetching https://ninjakitchen.fr/produits/bloc-couteaux-avec-aiguiseur-integre-ninja-foodi-staysharp-set-de-6-pieces-k32006eu-zidK32006EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:39:02,427 - ERROR - Error fetching https://ninjakitchen.fr/produits/gourde-isotherme-ninja-thirsti-bleue-700-ml-zidDW2401EUUKBL: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:39:11,976 - ERROR - Error fetching https://ninjakitchen.fr/produits/blender-portable-sans-fil-ninja-blast-noir-bc151eubk-zidBC151EUBK: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:39:12,251 - ERROR - Error fetching https://ninjakitchen.fr/produits/blender-portable-sans-fil-ninja-blast-cranberry-bc151eucr-zidBC151EUCR: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:39:18,360 - ERROR - Error fetching https://ninjakitchen.fr/produits/set-de-2-poeles-20-cm-28-cm-en-inox-ninja-foodi-zerostick-c62000eu-zidC62000EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:39:21,539 - ERROR - Error fetching https://ninjakitchen.fr/produits/gourde-isotherme-ninja-thirsti-bleue-530-ml-zidDW1801EUUKBL: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:39:21,930 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-etat-excellent-zidOL650EUREF: 404 Client Error: Not Found for url: https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-etat-excellent-zidOL650EUREF
+2024-10-01 08:39:24,959 - ERROR - Error fetching https://ninjakitchen.fr/produits/grill-d-interieur-friteuse-ninja-foodi-max-reconditionne-ag551eurefb-etat-correct-zidAG551EUREFB: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:39:28,081 - ERROR - Error fetching https://ninjakitchen.fr/produits/gourde-isotherme-ninja-thirsti-menthe-700-ml-zidDW2401EUUKMT: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:39:29,011 - INFO - Rerunning 37 skipped URLs...
+2024-10-01 08:39:33,448 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-ninja-foodi-mini-op100eu-6-en-1-4-7l-zidOP100EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:39:38,565 - ERROR - Error fetching https://ninjakitchen.fr/produits/friteuse-sans-huile-ninja-foodi-flex-10-4-l-af500eu-reconditionne-etat-excellent-zidAF500EUREF: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:39:46,603 - ERROR - Error fetching https://ninjakitchen.fr/produits/extracteur-de-jus-ninja-jc100eu-zidJC100EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:39:50,523 - ERROR - Error fetching https://ninjakitchen.fr/produits/grille-pain-3-en-1-inox-ninja-foodi-st202eu-zidST202EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:39:53,582 - ERROR - Error fetching https://ninjakitchen.fr/produits/ninja-speedi-10-en-1-rapid-cooker-air-fryer-on400eu-reconditionne-etat-excellent-zidON400EUREF: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:39:54,877 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-tres-bon-etat-zidOL650EUREFA: 404 Client Error: Not Found for url: https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-tres-bon-etat-zidOL650EUREFA
+2024-10-01 08:39:59,220 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-etat-correct-zidOL650EUREFB: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:40:03,475 - ERROR - Error fetching https://ninjakitchen.fr/produits/poele-28-cm-en-inox-ninja-foodi-zerostick-c60028eu-zidC60028EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:40:06,523 - ERROR - Error fetching https://ninjakitchen.fr/produits/batterie-de-cuisine-3-pieces-en-inox-ninja-foodi-zerostick-c63000eu-zidC63000EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:40:12,308 - ERROR - Error fetching https://ninjakitchen.fr/produits/blender-portable-sans-fil-ninja-blast-cranberry-bc151eucr-zidBC151EUCR: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:40:14,430 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-etat-excellent-zidOL650EUREF: 404 Client Error: Not Found for url: https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-etat-excellent-zidOL650EUREF
+2024-10-01 08:40:17,494 - ERROR - Error fetching https://ninjakitchen.fr/produits/grill-d-interieur-friteuse-ninja-foodi-max-reconditionne-ag551eurefb-etat-correct-zidAG551EUREFB: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:40:17,952 - INFO - Re-rerunning 12 skipped URLs...
+2024-10-01 08:40:18,598 - ERROR - Error fetching https://ninjakitchen.fr/produits/extracteur-de-jus-ninja-jc100eu-zidJC100EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:40:21,239 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-tres-bon-etat-zidOL650EUREFA: 404 Client Error: Not Found for url: https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-tres-bon-etat-zidOL650EUREFA
+2024-10-01 08:40:21,474 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-etat-correct-zidOL650EUREFB: 404 Client Error: Not Found for url: https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-etat-correct-zidOL650EUREFB
+2024-10-01 08:40:25,497 - ERROR - Error fetching https://ninjakitchen.fr/produits/blender-portable-sans-fil-ninja-blast-cranberry-bc151eucr-zidBC151EUCR: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:40:25,786 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-etat-excellent-zidOL650EUREF: 404 Client Error: Not Found for url: https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-etat-excellent-zidOL650EUREF
+2024-10-01 08:40:26,824 - INFO - Updated 51 out-of-stock products for FR Ninja
+2024-10-01 08:40:26,919 - INFO - Updated 99 in-stock products for FR Ninja
+2024-10-01 08:40:27,010 - INFO - Price unchanged for ProductID 5. Current: 179.99
+2024-10-01 08:40:27,011 - INFO - Price unchanged for ProductID 72. Current: 229.99
+2024-10-01 08:40:27,011 - INFO - Price unchanged for ProductID 82. Current: 214.99
+2024-10-01 08:40:27,012 - INFO - Price unchanged for ProductID 86. Current: 214.99
+2024-10-01 08:40:27,012 - INFO - Price unchanged for ProductID 87. Current: 179.99
+2024-10-01 08:40:27,013 - INFO - Price unchanged for ProductID 90. Current: 239.99
+2024-10-01 08:40:27,013 - INFO - Price unchanged for ProductID 91. Current: 149.99
+2024-10-01 08:40:27,014 - INFO - Price unchanged for ProductID 92. Current: 122.49
+2024-10-01 08:40:27,014 - INFO - Price unchanged for ProductID 93. Current: 189.99
+2024-10-01 08:40:27,014 - INFO - Price unchanged for ProductID 94. Current: 154.99
+2024-10-01 08:40:27,015 - INFO - Price unchanged for ProductID 95. Current: 129.99
+2024-10-01 08:40:27,015 - INFO - Price unchanged for ProductID 96. Current: 124.99
+2024-10-01 08:40:27,016 - INFO - Price unchanged for ProductID 97. Current: 149.99
+2024-10-01 08:40:27,016 - INFO - Price unchanged for ProductID 98. Current: 49.99
+2024-10-01 08:40:27,016 - INFO - Price unchanged for ProductID 105. Current: 114.99
+2024-10-01 08:40:27,017 - INFO - Price unchanged for ProductID 107. Current: 39.99
+2024-10-01 08:40:27,017 - INFO - Price unchanged for ProductID 109. Current: 39.99
+2024-10-01 08:40:27,017 - INFO - Price unchanged for ProductID 111. Current: 49.99
+2024-10-01 08:40:27,018 - INFO - Price unchanged for ProductID 112. Current: 59.99
+2024-10-01 08:40:27,018 - INFO - Price unchanged for ProductID 113. Current: 64.99
+2024-10-01 08:40:27,019 - INFO - Price unchanged for ProductID 114. Current: 74.99
+2024-10-01 08:40:27,019 - INFO - Price unchanged for ProductID 115. Current: 59.99
+2024-10-01 08:40:27,020 - INFO - Price unchanged for ProductID 116. Current: 89.99
+2024-10-01 08:40:27,020 - INFO - Price unchanged for ProductID 118. Current: 69.99
+2024-10-01 08:40:27,020 - INFO - Price unchanged for ProductID 119. Current: 279.99
+2024-10-01 08:40:27,021 - INFO - Price unchanged for ProductID 120. Current: 199.99
+2024-10-01 08:40:27,021 - INFO - Price unchanged for ProductID 122. Current: 34.99
+2024-10-01 08:40:27,022 - INFO - Price unchanged for ProductID 126. Current: 139.99
+2024-10-01 08:40:27,022 - INFO - Price unchanged for ProductID 127. Current: 169.99
+2024-10-01 08:40:27,023 - INFO - Price unchanged for ProductID 128. Current: 189.99
+2024-10-01 08:40:27,023 - INFO - Price unchanged for ProductID 129. Current: 129.99
+2024-10-01 08:40:27,023 - INFO - Price unchanged for ProductID 131. Current: 99.99
+2024-10-01 08:40:27,024 - INFO - Price unchanged for ProductID 134. Current: 169.99
+2024-10-01 08:40:27,024 - INFO - Price unchanged for ProductID 135. Current: 94.99
+2024-10-01 08:40:27,025 - INFO - Price unchanged for ProductID 136. Current: 179.99
+2024-10-01 08:40:27,025 - INFO - Price unchanged for ProductID 137. Current: 54.99
+2024-10-01 08:40:27,025 - INFO - Price unchanged for ProductID 148. Current: 184.99
+2024-10-01 08:40:27,026 - INFO - Price unchanged for ProductID 165. Current: 129.99
+2024-10-01 08:40:27,026 - INFO - Price unchanged for ProductID 190. Current: 169.99
+2024-10-01 08:40:27,027 - INFO - Price unchanged for ProductID 21. Current: 179.99
+2024-10-01 08:40:27,027 - INFO - Price unchanged for ProductID 85. Current: 184.99
+2024-10-01 08:40:27,028 - INFO - Price unchanged for ProductID 102. Current: 169.99
+2024-10-01 08:40:27,028 - INFO - Price unchanged for ProductID 110. Current: 44.99
+2024-10-01 08:40:27,028 - INFO - Price unchanged for ProductID 117. Current: 49.99
+2024-10-01 08:40:27,029 - INFO - Price unchanged for ProductID 130. Current: 64.99
+2024-10-01 08:40:27,029 - INFO - Price unchanged for ProductID 162. Current: 449.99
+2024-10-01 08:40:27,030 - INFO - Price unchanged for ProductID 179. Current: 269.99
+2024-10-01 08:40:27,030 - INFO - Price unchanged for ProductID 180. Current: 59.99
+2024-10-01 08:40:27,031 - INFO - Price unchanged for ProductID 182. Current: 145.99
+2024-10-01 08:40:27,031 - INFO - Price unchanged for ProductID 83. Current: 229.99
+2024-10-01 08:40:27,031 - INFO - Price unchanged for ProductID 132. Current: 149.99
+2024-10-01 08:40:27,032 - INFO - Price unchanged for ProductID 53. Current: 164.99
+2024-10-01 08:40:27,032 - INFO - Price unchanged for ProductID 54. Current: 279.99
+2024-10-01 08:40:27,033 - INFO - Price unchanged for ProductID 13. Current: 229.99
+2024-10-01 08:40:27,033 - INFO - Price unchanged for ProductID 56. Current: 169.99
+2024-10-01 08:40:27,034 - INFO - Price unchanged for ProductID 57. Current: 379.99
+2024-10-01 08:40:27,034 - INFO - Price unchanged for ProductID 3. Current: 219.99
+2024-10-01 08:40:27,035 - INFO - Price unchanged for ProductID 6. Current: 269.99
+2024-10-01 08:40:27,035 - INFO - Price unchanged for ProductID 7. Current: 269.99
+2024-10-01 08:40:27,035 - INFO - Price unchanged for ProductID 9. Current: 149.99
+2024-10-01 08:40:27,036 - INFO - Price unchanged for ProductID 8. Current: 79.99
+2024-10-01 08:40:27,036 - INFO - Price unchanged for ProductID 14. Current: 279.99
+2024-10-01 08:40:27,036 - INFO - Price unchanged for ProductID 67. Current: 229.99
+2024-10-01 08:40:27,037 - INFO - Price unchanged for ProductID 69. Current: 149.99
+2024-10-01 08:40:27,037 - INFO - Price unchanged for ProductID 70. Current: 249.99
+2024-10-01 08:40:27,038 - INFO - Price unchanged for ProductID 71. Current: 149.99
+2024-10-01 08:40:27,039 - INFO - Price unchanged for ProductID 73. Current: 229.99
+2024-10-01 08:40:27,039 - INFO - Price unchanged for ProductID 74. Current: 189.99
+2024-10-01 08:40:27,039 - INFO - Price unchanged for ProductID 75. Current: 199.99
+2024-10-01 08:40:27,040 - INFO - Price unchanged for ProductID 77. Current: 229.99
+2024-10-01 08:40:27,040 - INFO - Price unchanged for ProductID 11. Current: 139.99
+2024-10-01 08:40:27,042 - INFO - New price recorded for ProductID 80. Price: 252.99
+2024-10-01 08:40:27,042 - INFO - Price unchanged for ProductID 81. Current: 169.99
+2024-10-01 08:40:27,043 - INFO - Price unchanged for ProductID 88. Current: 214.99
+2024-10-01 08:40:27,043 - INFO - Price unchanged for ProductID 89. Current: 292.49
+2024-10-01 08:40:27,043 - INFO - Price unchanged for ProductID 100. Current: 79.99
+2024-10-01 08:40:27,044 - INFO - Price unchanged for ProductID 101. Current: 94.99
+2024-10-01 08:40:27,044 - INFO - Price unchanged for ProductID 103. Current: 134.99
+2024-10-01 08:40:27,045 - INFO - Price unchanged for ProductID 104. Current: 257.49
+2024-10-01 08:40:27,045 - INFO - Price unchanged for ProductID 108. Current: 134.99
+2024-10-01 08:40:27,046 - INFO - Price unchanged for ProductID 123. Current: 29.99
+2024-10-01 08:40:27,046 - INFO - Price unchanged for ProductID 124. Current: 209.99
+2024-10-01 08:40:27,047 - INFO - Price unchanged for ProductID 125. Current: 209.99
+2024-10-01 08:40:27,047 - INFO - Price unchanged for ProductID 133. Current: 29.99
+2024-10-01 08:40:27,048 - INFO - Price unchanged for ProductID 138. Current: 114.99
+2024-10-01 08:40:27,048 - INFO - Price unchanged for ProductID 140. Current: 214.99
+2024-10-01 08:40:27,048 - INFO - Price unchanged for ProductID 141. Current: 149.99
+2024-10-01 08:40:27,049 - INFO - Price unchanged for ProductID 142. Current: 299.99
+2024-10-01 08:40:27,049 - INFO - Price unchanged for ProductID 145. Current: 89.99
+2024-10-01 08:40:27,050 - INFO - Price unchanged for ProductID 146. Current: 104.99
+2024-10-01 08:40:27,050 - INFO - Price unchanged for ProductID 147. Current: 187.49
+2024-10-01 08:40:27,051 - INFO - Price unchanged for ProductID 149. Current: 169.99
+2024-10-01 08:40:27,051 - INFO - Price unchanged for ProductID 150. Current: 194.99
+2024-10-01 08:40:27,051 - INFO - Price unchanged for ProductID 151. Current: 289.99
+2024-10-01 08:40:27,052 - INFO - Price unchanged for ProductID 153. Current: 84.99
+2024-10-01 08:40:27,052 - INFO - Price unchanged for ProductID 154. Current: 149.99
+2024-10-01 08:40:27,053 - INFO - Price unchanged for ProductID 157. Current: 239.99
+2024-10-01 08:40:27,053 - INFO - Price unchanged for ProductID 158. Current: 129.99
+2024-10-01 08:40:27,054 - INFO - Price unchanged for ProductID 159. Current: 69.99
+2024-10-01 08:40:27,054 - INFO - Price unchanged for ProductID 15. Current: 279.99
+2024-10-01 08:40:27,054 - INFO - Price unchanged for ProductID 17. Current: 299.99
+2024-10-01 08:40:27,055 - INFO - Price unchanged for ProductID 20. Current: 59.99
+2024-10-01 08:40:27,055 - INFO - Price unchanged for ProductID 166. Current: 149.99
+2024-10-01 08:40:27,056 - INFO - Price unchanged for ProductID 167. Current: 99.99
+2024-10-01 08:40:27,056 - INFO - Price unchanged for ProductID 18. Current: 149.99
+2024-10-01 08:40:27,057 - INFO - Price unchanged for ProductID 169. Current: 179.99
+2024-10-01 08:40:27,057 - INFO - Price unchanged for ProductID 22. Current: 129.99
+2024-10-01 08:40:27,057 - INFO - Price unchanged for ProductID 1. Current: 202.99
+2024-10-01 08:40:27,058 - INFO - Price unchanged for ProductID 2. Current: 219.99
+2024-10-01 08:40:27,058 - INFO - Price unchanged for ProductID 173. Current: 84.99
+2024-10-01 08:40:27,059 - INFO - Price unchanged for ProductID 174. Current: 179.99
+2024-10-01 08:40:27,059 - INFO - Price unchanged for ProductID 175. Current: 249.99
+2024-10-01 08:40:27,059 - INFO - Price unchanged for ProductID 177. Current: 74.99
+2024-10-01 08:40:27,060 - INFO - Price unchanged for ProductID 181. Current: 149.99
+2024-10-01 08:40:27,060 - INFO - Price unchanged for ProductID 183. Current: 129.99
+2024-10-01 08:40:27,061 - INFO - Price unchanged for ProductID 184. Current: 129.99
+2024-10-01 08:40:27,061 - INFO - Price unchanged for ProductID 185. Current: 34.99
+2024-10-01 08:40:27,062 - INFO - Price unchanged for ProductID 186. Current: 34.99
+2024-10-01 08:40:27,062 - INFO - Price unchanged for ProductID 188. Current: 29.99
+2024-10-01 08:40:27,063 - INFO - Price unchanged for ProductID 189. Current: 29.99
+2024-10-01 08:40:27,063 - INFO - Price unchanged for ProductID 191. Current: 169.99
+2024-10-01 08:40:27,063 - INFO - Price unchanged for ProductID 192. Current: 144.99
+2024-10-01 08:40:27,064 - INFO - Price unchanged for ProductID 193. Current: 92.49
+2024-10-01 08:40:27,064 - INFO - Price unchanged for ProductID 196. Current: 59.99
+2024-10-01 08:40:27,065 - INFO - Price unchanged for ProductID 197. Current: 69.99
+2024-10-01 08:40:27,065 - INFO - Price unchanged for ProductID 19. Current: 119.99
+2024-10-01 08:40:27,066 - INFO - Price unchanged for ProductID 199. Current: 54.99
+2024-10-01 08:40:27,066 - INFO - Price unchanged for ProductID 201. Current: 54.99
+2024-10-01 08:40:27,066 - INFO - Price unchanged for ProductID 205. Current: 69.99
+2024-10-01 08:40:27,066 - INFO - Price unchanged for ProductID 4. Current: 199.99
+2024-10-01 08:40:27,067 - INFO - Price unchanged for ProductID 12. Current: 169.99
+2024-10-01 08:40:27,068 - INFO - Price unchanged for ProductID 76. Current: 299.99
+2024-10-01 08:40:27,068 - INFO - Price unchanged for ProductID 10. Current: 129.99
+2024-10-01 08:40:27,068 - INFO - Price unchanged for ProductID 84. Current: 99.99
+2024-10-01 08:40:27,068 - INFO - Price unchanged for ProductID 99. Current: 152.49
+2024-10-01 08:40:27,070 - INFO - Price unchanged for ProductID 106. Current: 109.99
+2024-10-01 08:40:27,070 - INFO - Price unchanged for ProductID 143. Current: 99.99
+2024-10-01 08:40:27,071 - INFO - Price unchanged for ProductID 144. Current: 59.99
+2024-10-01 08:40:27,071 - INFO - Price unchanged for ProductID 155. Current: 149.99
+2024-10-01 08:40:27,071 - INFO - Price unchanged for ProductID 16. Current: 429.99
+2024-10-01 08:40:27,072 - INFO - Price unchanged for ProductID 187. Current: 34.99
+2024-10-01 08:40:27,072 - INFO - Price unchanged for ProductID 26. Current: 59.99
+2024-10-01 08:40:27,073 - INFO - Price unchanged for ProductID 200. Current: 99.99
+2024-10-01 08:40:27,073 - INFO - Price unchanged for ProductID 202. Current: 29.99
+2024-10-01 08:40:27,073 - INFO - Price unchanged for ProductID 206. Current: 34.99
+2024-10-01 08:40:27,073 - INFO - Price unchanged for ProductID 68. Current: 149.99
+2024-10-01 08:40:27,075 - INFO - Price unchanged for ProductID 139. Current: 169.99
+2024-10-01 08:40:27,075 - INFO - Price unchanged for ProductID 176. Current: 64.99
+2024-10-01 08:40:27,075 - INFO - Price unchanged for ProductID 178. Current: 199.99
+2024-10-01 08:40:27,076 - INFO - Price unchanged for ProductID 204. Current: 174.99
+2024-10-01 08:40:27,080 - INFO - Saved product status and prices for 150 products for FR Ninja
+2024-10-01 08:40:27,080 - WARNING - The following URLs were skipped for FR Ninja:
+2024-10-01 08:40:27,080 - WARNING - https://ninjakitchen.fr/produits/extracteur-de-jus-ninja-jc100eu-zidJC100EU
+2024-10-01 08:40:27,080 - WARNING - https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-tres-bon-etat-zidOL650EUREFA
+2024-10-01 08:40:27,080 - WARNING - https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-etat-correct-zidOL650EUREFB
+2024-10-01 08:40:27,080 - WARNING - https://ninjakitchen.fr/produits/blender-portable-sans-fil-ninja-blast-cranberry-bc151eucr-zidBC151EUCR
+2024-10-01 08:40:27,080 - WARNING - https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-etat-excellent-zidOL650EUREF
+2024-10-01 08:40:27,080 - WARNING - 5 URLs were skipped after retrying for FR Ninja
+2024-10-01 08:40:27,080 - WARNING - 37 URLs were skipped after retrying for FR Ninja
+2024-10-01 08:40:27,080 - INFO - Finished checking FR Ninja
+2024-10-01 08:40:27,080 - INFO - -----------------------------------
+2024-10-01 08:40:27,080 - INFO - Checking stock for FR Shark
+2024-10-01 08:40:27,081 - INFO - Processing URLs...
+2024-10-01 08:40:29,877 - ERROR - Error fetching https://sharkclean.fr/produits/aspirateur-balai-sans-fil-shark-icz160eut-anti-emmelement-de-cheveux-et-poils-animaux-zidICZ160EUT: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:40:39,943 - ERROR - Error fetching https://sharkclean.fr/produits/purificateur-d-air-compact-shark-hp100eu-avec-filtration-hepa-zidHP100EU: HTTPSConnectionPool(host='sharkclean.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:40:43,001 - ERROR - Error fetching https://sharkclean.fr/produits/seche-cheveux-shark-speedstyle-embout-rapidgloss-pour-cheveux-boucles-et-frises-zidHD334EU: HTTPSConnectionPool(host='sharkclean.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:40:44,712 - ERROR - Error fetching https://sharkclean.fr/produits/aspirateur-balai-sans-fil-shark-stratos-avec-mini-brosse-motorisee-autonomie-120-minutes-iz420eut-zidIZ420EUT: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:40:54,810 - ERROR - Error fetching https://sharkclean.fr/produits/aspirateur-sans-fil-shark-icz300eu-avec-technologies-powerfins-get-anywhere-et-fonction-anti-emmelement-zidICZ300EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:40:57,861 - ERROR - Error fetching https://sharkclean.fr/produits/aspirateur-robot-shark-ai-ultra-2-en-1-rv2600wdeu-zidRV2600WDEU: HTTPSConnectionPool(host='sharkclean.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:41:04,762 - ERROR - Error fetching https://sharkclean.fr/produits/aspirateur-balai-filaire-shark-nz801eu-avec-technologie-anti-emmelement-des-cheveux-et-des-poils-et-bloc-moteur-detachable-powered-lift-away-zidNZ801EU: HTTPSConnectionPool(host='sharkclean.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:41:24,804 - ERROR - Error fetching https://sharkclean.fr/produits/seche-cheveux-shark-speedstyle-embout-rapidgloss-pour-cheveux-lisses-et-ondules-zidHD333EU: HTTPSConnectionPool(host='sharkclean.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:41:33,432 - ERROR - Error fetching https://sharkclean.fr/produits/aspirateur-balai-filaire-shark-hz500eut-anti-emmelement-de-cheveux-brosse-speciale-poils-d-animaux-zidHZ500EUT: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:41:36,474 - INFO - Rerunning 9 skipped URLs...
+2024-10-01 08:41:48,134 - INFO - Updated 9 out-of-stock products for FR Shark
+2024-10-01 08:41:48,190 - INFO - Updated 50 in-stock products for FR Shark
+2024-10-01 08:41:48,238 - INFO - Price unchanged for ProductID 210. Current: 299.99
+2024-10-01 08:41:48,238 - INFO - Price unchanged for ProductID 212. Current: 849.99
+2024-10-01 08:41:48,239 - INFO - Price unchanged for ProductID 215. Current: 199.99
+2024-10-01 08:41:48,239 - INFO - Price unchanged for ProductID 218. Current: 199.99
+2024-10-01 08:41:48,240 - INFO - Price unchanged for ProductID 232. Current: 449.99
+2024-10-01 08:41:48,240 - INFO - Price unchanged for ProductID 241. Current: 129.99
+2024-10-01 08:41:48,241 - INFO - Price unchanged for ProductID 209. Current: 429.99
+2024-10-01 08:41:48,242 - INFO - Price unchanged for ProductID 216. Current: 229.99
+2024-10-01 08:41:48,242 - INFO - Price unchanged for ProductID 230. Current: 219.99
+2024-10-01 08:41:48,243 - INFO - Price unchanged for ProductID 42. Current: 379.99
+2024-10-01 08:41:48,243 - INFO - Price unchanged for ProductID 211. Current: 79.99
+2024-10-01 08:41:48,244 - INFO - Price unchanged for ProductID 213. Current: 149.99
+2024-10-01 08:41:48,244 - INFO - Price unchanged for ProductID 214. Current: 84.99
+2024-10-01 08:41:48,244 - INFO - Price unchanged for ProductID 34. Current: 299.0
+2024-10-01 08:41:48,245 - INFO - Price unchanged for ProductID 29. Current: 379.99
+2024-10-01 08:41:48,245 - INFO - Price unchanged for ProductID 27. Current: 349.99
+2024-10-01 08:41:48,246 - INFO - Price unchanged for ProductID 35. Current: 349.99
+2024-10-01 08:41:48,246 - INFO - Price unchanged for ProductID 224. Current: 329.99
+2024-10-01 08:41:48,247 - INFO - Price unchanged for ProductID 225. Current: 399.99
+2024-10-01 08:41:48,247 - INFO - Price unchanged for ProductID 226. Current: 239.99
+2024-10-01 08:41:48,247 - INFO - Price unchanged for ProductID 227. Current: 229.99
+2024-10-01 08:41:48,248 - INFO - Price unchanged for ProductID 228. Current: 449.99
+2024-10-01 08:41:48,248 - INFO - Price unchanged for ProductID 231. Current: 249.99
+2024-10-01 08:41:48,249 - INFO - Price unchanged for ProductID 233. Current: 209.99
+2024-10-01 08:41:48,249 - INFO - Price unchanged for ProductID 234. Current: 189.99
+2024-10-01 08:41:48,250 - INFO - Price unchanged for ProductID 236. Current: 379.99
+2024-10-01 08:41:48,250 - INFO - Price unchanged for ProductID 237. Current: 249.99
+2024-10-01 08:41:48,250 - INFO - Price unchanged for ProductID 238. Current: 249.99
+2024-10-01 08:41:48,251 - INFO - Price unchanged for ProductID 43. Current: 179.99
+2024-10-01 08:41:48,251 - INFO - Price unchanged for ProductID 44. Current: 129.99
+2024-10-01 08:41:48,252 - INFO - Price unchanged for ProductID 242. Current: 244.99
+2024-10-01 08:41:48,252 - INFO - Price unchanged for ProductID 243. Current: 284.99
+2024-10-01 08:41:48,253 - INFO - Price unchanged for ProductID 244. Current: 179.99
+2024-10-01 08:41:48,253 - INFO - Price unchanged for ProductID 245. Current: 209.99
+2024-10-01 08:41:48,254 - INFO - Price unchanged for ProductID 246. Current: 134.99
+2024-10-01 08:41:48,254 - INFO - Price unchanged for ProductID 247. Current: 169.99
+2024-10-01 08:41:48,254 - INFO - Price unchanged for ProductID 248. Current: 75.99
+2024-10-01 08:41:48,254 - INFO - Price unchanged for ProductID 249. Current: 189.99
+2024-10-01 08:41:48,256 - INFO - Price unchanged for ProductID 250. Current: 59.99
+2024-10-01 08:41:48,256 - INFO - Price unchanged for ProductID 41. Current: 169.99
+2024-10-01 08:41:48,257 - INFO - Price unchanged for ProductID 253. Current: 249.99
+2024-10-01 08:41:48,257 - INFO - Price unchanged for ProductID 46. Current: 79.99
+2024-10-01 08:41:48,258 - INFO - Price unchanged for ProductID 45. Current: 99.99
+2024-10-01 08:41:48,258 - INFO - Price unchanged for ProductID 256. Current: 199.99
+2024-10-01 08:41:48,259 - INFO - Price unchanged for ProductID 257. Current: 289.99
+2024-10-01 08:41:48,259 - INFO - Price unchanged for ProductID 47. Current: 199.99
+2024-10-01 08:41:48,259 - INFO - Price unchanged for ProductID 30. Current: 299.99
+2024-10-01 08:41:48,260 - INFO - Price unchanged for ProductID 36. Current: 349.99
+2024-10-01 08:41:48,260 - INFO - Price unchanged for ProductID 261. Current: 269.99
+2024-10-01 08:41:48,261 - INFO - Price unchanged for ProductID 263. Current: 249.99
+2024-10-01 08:41:48,261 - INFO - Price unchanged for ProductID 264. Current: 129.99
+2024-10-01 08:41:48,261 - INFO - Price unchanged for ProductID 265. Current: 149.99
+2024-10-01 08:41:48,262 - INFO - Price unchanged for ProductID 266. Current: 249.99
+2024-10-01 08:41:48,262 - INFO - Price unchanged for ProductID 40. Current: 179.99
+2024-10-01 08:41:48,262 - INFO - Price unchanged for ProductID 220. Current: 449.99
+2024-10-01 08:41:48,264 - INFO - Price unchanged for ProductID 229. Current: 429.99
+2024-10-01 08:41:48,264 - INFO - Price unchanged for ProductID 235. Current: 349.99
+2024-10-01 08:41:48,265 - INFO - Price unchanged for ProductID 39. Current: 149.99
+2024-10-01 08:41:48,265 - INFO - Price unchanged for ProductID 262. Current: 289.99
+2024-10-01 08:41:48,265 - INFO - Saved product status and prices for 59 products for FR Shark
+2024-10-01 08:41:48,265 - INFO - No URLs were skipped in the end for FR Shark
+2024-10-01 08:41:48,265 - INFO - Finished checking FR Shark
+2024-10-01 08:41:48,265 - INFO - -----------------------------------
+2024-10-01 08:41:48,265 - INFO - Finished stock check for all URLs

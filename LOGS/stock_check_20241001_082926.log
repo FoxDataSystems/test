@@ -1,0 +1,154 @@
+2024-10-01 08:29:26,045 - INFO - Starting stock check
+2024-10-01 08:29:26,049 - INFO - Checking stock for NL Ninja
+2024-10-01 08:29:26,052 - INFO - Processing URLs...
+2024-10-01 08:29:43,093 - INFO - Updated 2 out-of-stock products for NL Ninja
+2024-10-01 08:29:43,127 - INFO - Updated 24 in-stock products for NL Ninja
+2024-10-01 08:29:43,148 - ERROR - Error in save_prices_to_db: time data '2024-09-30' does not match format '%Y-%m-%d %H:%M:%S'
+2024-10-01 08:29:43,148 - INFO - Saved product status and prices for 26 products for NL Ninja
+2024-10-01 08:29:43,148 - INFO - No URLs were skipped in the end for NL Ninja
+2024-10-01 08:29:43,148 - INFO - Finished checking NL Ninja
+2024-10-01 08:29:43,148 - INFO - -----------------------------------
+2024-10-01 08:29:43,148 - INFO - Checking stock for BE Shark
+2024-10-01 08:29:43,149 - INFO - Processing URLs...
+2024-10-01 08:29:51,621 - ERROR - Error fetching https://sharkclean.be/product/shark-anti-hair-wrap-snoerloze-steelstofzuiger-met-flexology-model-voor-huisdieren-enkele-accu-iz201eut-zidIZ201EUT: HTTPSConnectionPool(host='sharkclean.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:29:54,662 - ERROR - Error fetching https://sharkclean.be/product/shark-steam-scrub-automatische-stoommop-s6002eu-zidS6002EU: HTTPSConnectionPool(host='sharkclean.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:30:03,223 - ERROR - Error fetching https://sharkclean.be/product/shark-speedstyle-rapidgloss-finisher-en-haardroger-met-hoge-snelheid-voor-steil-en-golvend-haar-hd333eu-zidHD333EU: HTTPSConnectionPool(host='sharkclean.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:30:03,492 - ERROR - Error fetching https://sharkclean.be/product/shark-speedstyle-rapidgloss-finisher-en-haardroger-met-hoge-snelheid-voor-krullen-en-kroeshaar-hd334eu-zidHD334EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:30:08,476 - INFO - Rerunning 4 skipped URLs...
+2024-10-01 08:30:11,669 - INFO - Updated 3 out-of-stock products for BE Shark
+2024-10-01 08:30:11,699 - INFO - Updated 18 in-stock products for BE Shark
+2024-10-01 08:30:11,725 - INFO - Price unchanged for ProductID 28. Current: 211.99
+2024-10-01 08:30:11,725 - INFO - Price unchanged for ProductID 32. Current: 249.99
+2024-10-01 08:30:11,725 - INFO - Price unchanged for ProductID 31. Current: 129.99
+2024-10-01 08:30:11,725 - INFO - Price unchanged for ProductID 27. Current: 322.99
+2024-10-01 08:30:11,729 - INFO - Price unchanged for ProductID 29. Current: 379.99
+2024-10-01 08:30:11,729 - INFO - Price unchanged for ProductID 30. Current: 197.99
+2024-10-01 08:30:11,729 - INFO - Price unchanged for ProductID 48. Current: 187.99
+2024-10-01 08:30:11,729 - INFO - Price unchanged for ProductID 34. Current: 304.99
+2024-10-01 08:30:11,729 - INFO - Price unchanged for ProductID 35. Current: 249.99
+2024-10-01 08:30:11,732 - INFO - Price unchanged for ProductID 36. Current: 349.99
+2024-10-01 08:30:11,732 - INFO - Price unchanged for ProductID 37. Current: 73.99
+2024-10-01 08:30:11,732 - INFO - Price unchanged for ProductID 38. Current: 79.99
+2024-10-01 08:30:11,732 - INFO - Price unchanged for ProductID 41. Current: 199.99
+2024-10-01 08:30:11,732 - INFO - Price unchanged for ProductID 43. Current: 129.99
+2024-10-01 08:30:11,732 - INFO - Price unchanged for ProductID 44. Current: 109.99
+2024-10-01 08:30:11,732 - INFO - Price unchanged for ProductID 45. Current: 99.99
+2024-10-01 08:30:11,732 - INFO - Price unchanged for ProductID 47. Current: 189.99
+2024-10-01 08:30:11,732 - INFO - Price unchanged for ProductID 46. Current: 79.99
+2024-10-01 08:30:11,732 - INFO - Price unchanged for ProductID 42. Current: 299.99
+2024-10-01 08:30:11,732 - INFO - Price unchanged for ProductID 39. Current: 179.99
+2024-10-01 08:30:11,732 - INFO - Price unchanged for ProductID 40. Current: 179.99
+2024-10-01 08:30:11,732 - INFO - Saved product status and prices for 21 products for BE Shark
+2024-10-01 08:30:11,732 - INFO - No URLs were skipped in the end for BE Shark
+2024-10-01 08:30:11,732 - INFO - Finished checking BE Shark
+2024-10-01 08:30:11,732 - INFO - -----------------------------------
+2024-10-01 08:30:11,732 - INFO - Checking stock for NL Shark
+2024-10-01 08:30:11,732 - INFO - Processing URLs...
+2024-10-01 08:30:25,902 - INFO - Updated 3 out-of-stock products for NL Shark
+2024-10-01 08:30:25,934 - INFO - Updated 17 in-stock products for NL Shark
+2024-10-01 08:30:25,950 - INFO - Price unchanged for ProductID 31. Current: 129.99
+2024-10-01 08:30:25,950 - INFO - Price unchanged for ProductID 32. Current: 249.99
+2024-10-01 08:30:25,950 - INFO - Price unchanged for ProductID 28. Current: 211.99
+2024-10-01 08:30:25,950 - INFO - Price unchanged for ProductID 29. Current: 365.99
+2024-10-01 08:30:25,950 - INFO - Price unchanged for ProductID 34. Current: 304.99
+2024-10-01 08:30:25,950 - INFO - Price unchanged for ProductID 30. Current: 197.99
+2024-10-01 08:30:25,950 - INFO - Price unchanged for ProductID 35. Current: 249.99
+2024-10-01 08:30:25,950 - INFO - Price unchanged for ProductID 36. Current: 349.99
+2024-10-01 08:30:25,950 - INFO - Price unchanged for ProductID 37. Current: 79.99
+2024-10-01 08:30:25,950 - INFO - Price unchanged for ProductID 38. Current: 79.99
+2024-10-01 08:30:25,961 - INFO - Price unchanged for ProductID 39. Current: 179.99
+2024-10-01 08:30:25,961 - INFO - Price unchanged for ProductID 40. Current: 179.99
+2024-10-01 08:30:25,961 - INFO - Price unchanged for ProductID 41. Current: 199.99
+2024-10-01 08:30:25,961 - INFO - Price unchanged for ProductID 42. Current: 289.99
+2024-10-01 08:30:25,961 - INFO - Price unchanged for ProductID 27. Current: 319.99
+2024-10-01 08:30:25,961 - INFO - Price unchanged for ProductID 43. Current: 125.99
+2024-10-01 08:30:25,961 - INFO - Price unchanged for ProductID 44. Current: 105.99
+2024-10-01 08:30:25,961 - INFO - Price unchanged for ProductID 45. Current: 119.99
+2024-10-01 08:30:25,961 - INFO - Price unchanged for ProductID 46. Current: 86.99
+2024-10-01 08:30:25,961 - INFO - Price unchanged for ProductID 47. Current: 148.99
+2024-10-01 08:30:25,961 - INFO - Saved product status and prices for 20 products for NL Shark
+2024-10-01 08:30:25,961 - INFO - No URLs were skipped in the end for NL Shark
+2024-10-01 08:30:25,961 - INFO - Finished checking NL Shark
+2024-10-01 08:30:25,961 - INFO - -----------------------------------
+2024-10-01 08:30:25,961 - INFO - Checking stock for BE Ninja
+2024-10-01 08:30:25,961 - INFO - Processing URLs...
+2024-10-01 08:30:32,415 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-airfryer-af100eu-zidAF100EU: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:30:40,128 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-foodi-max-dual-zone-air-fryer-with-smart-cook-system-af451eu-zidAF451EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:30:43,171 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-foodi-max-9-in-1-multi-cooker-7-5l-op500eu-zidOP500EU: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:30:43,447 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-woodfire-buitenoven-pizzamaker-en-bbq-rookoven-zidOO101EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:30:49,130 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-creami-deluxe-10-in-1-ice-cream-and-frozen-drink-maker-nc501eu-zidNC501EU: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:30:52,902 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-ijsmachines-dessertbakken-set-van-4-zidXSKPNTLID4EUK: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:30:56,040 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-blast-snoerloze-draagbare-blender-zwart-bc151eubk-zidBC151EUBK: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:30:59,095 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-ijsmachines-dessertbakken-set-van-4-zidXSK4PINTEUUK: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:30:59,095 - INFO - Rerunning 8 skipped URLs...
+2024-10-01 08:31:03,293 - ERROR - Error fetching https://ninjakitchen.be/product/ninja-foodi-max-dual-zone-air-fryer-with-smart-cook-system-af451eu-zidAF451EU: HTTPSConnectionPool(host='ninjakitchen.be', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:31:08,358 - INFO - Re-rerunning 1 skipped URLs...
+2024-10-01 08:31:09,582 - INFO - Updated 2 out-of-stock products for BE Ninja
+2024-10-01 08:31:09,598 - INFO - Updated 24 in-stock products for BE Ninja
+2024-10-01 08:31:09,614 - INFO - Price unchanged for ProductID 5. Current: 159.99
+2024-10-01 08:31:09,614 - INFO - Price unchanged for ProductID 23. Current: 24.99
+2024-10-01 08:31:09,627 - INFO - Price unchanged for ProductID 1. Current: 156.99
+2024-10-01 08:31:09,627 - INFO - Price unchanged for ProductID 3. Current: 199.99
+2024-10-01 08:31:09,627 - INFO - Price unchanged for ProductID 4. Current: 139.99
+2024-10-01 08:31:09,627 - INFO - Price unchanged for ProductID 7. Current: 184.99
+2024-10-01 08:31:09,627 - INFO - Price unchanged for ProductID 10. Current: 99.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 11. Current: 119.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 12. Current: 169.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 14. Current: 293.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 15. Current: 264.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 16. Current: 359.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 18. Current: 112.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 19. Current: 98.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 20. Current: 52.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 21. Current: 162.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 22. Current: 109.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 9. Current: 103.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 8. Current: 94.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 13. Current: 250.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 17. Current: 301.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 2. Current: 209.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 25. Current: 24.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 26. Current: 52.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 24. Current: 24.99
+2024-10-01 08:31:09,630 - INFO - Price unchanged for ProductID 6. Current: 199.99
+2024-10-01 08:31:09,630 - INFO - Saved product status and prices for 26 products for BE Ninja
+2024-10-01 08:31:09,630 - INFO - No URLs were skipped in the end for BE Ninja
+2024-10-01 08:31:09,630 - INFO - Finished checking BE Ninja
+2024-10-01 08:31:09,630 - INFO - -----------------------------------
+2024-10-01 08:31:09,630 - INFO - Checking stock for FR Ninja
+2024-10-01 08:31:09,630 - INFO - Processing URLs...
+2024-10-01 08:31:13,964 - ERROR - Error fetching https://ninjakitchen.fr/produits/ninja-combi-multicuiseur-four-et-friteuse-sans-huile-12-en-1-sfp700eu-zidSFP700EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:31:19,290 - ERROR - Error fetching https://ninjakitchen.fr/produits/grill-d-interieur-plancha-friteuse-ninja-foodi-max-pro-ag651eu-zidAG651EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:31:23,968 - ERROR - Error fetching https://ninjakitchen.fr/produits/friteuse-sans-huile-ninja-air-fryer-max-af160eu-zidAF160EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:31:34,073 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-ninja-foodi-op300eu-7-en-1-6l-reconditionne-tres-bon-etat-zidOP300EUREFA: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:31:48,573 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-ol650eu-zidOL650EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:31:51,624 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-ninja-foodi-op300eu-7-en-1-6l-zidOP300EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:32:04,340 - ERROR - Error fetching https://ninjakitchen.fr/produits/grill-d-interieur-ninja-foodi-max-reconditionne-ag551eudb-etat-excellent-zidAG551EUDBREF: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:32:11,290 - ERROR - Error fetching https://ninjakitchen.fr/produits/blender-2-en-1-ninja-avec-auto-iq-reconditionne-bn750eu-etat-excellent-zidBN750EUREF: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:32:15,215 - ERROR - Error fetching https://ninjakitchen.fr/produits/friteuse-sans-huile-ninja-foodi-max-dualzone-af400eudbcp-reconditionne-tres-bon-etat-zidAF400EUDBCPRFA: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:32:21,849 - ERROR - Error fetching https://ninjakitchen.fr/produits/la-fabrique-a-delices-glaces-ninja-creami-reconditionne-nc300eurefa-tres-bon-etat-zidNC300EUREFA: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:32:41,053 - ERROR - Error fetching https://ninjakitchen.fr/produits/poele-ninja-foodi-zerostick-26-cm-c30026eu-zidC30026EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:32:49,359 - ERROR - Error fetching https://ninjakitchen.fr/produits/poele-30-cm-en-inox-ninja-foodi-zerostick-c60030eu-zidC60030EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:32:54,055 - ERROR - Error fetching https://ninjakitchen.fr/produits/extracteur-de-jus-ninja-jc100eu-zidJC100EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:32:57,907 - ERROR - Error fetching https://ninjakitchen.fr/produits/gourde-isotherme-ninja-thirsti-noire-530-ml-zidDW1801EUUKBK: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:33:00,959 - ERROR - Error fetching https://ninjakitchen.fr/produits/friteuse-sans-huile-ninja-foodi-max-dualzone-9-5l-reconditionne-af400euref-etat-excellent-zidAF400EUREF: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:33:04,139 - ERROR - Error fetching https://ninjakitchen.fr/produits/friteuse-sans-huile-ninja-foodi-max-dualzone-reconditionne-af451euref-etat-excellent-zidAF451EUREF: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:33:07,181 - ERROR - Error fetching https://ninjakitchen.fr/produits/blender-3-en-1-ninja-foodi-power-nutri-reconditionne-cb350eu-etat-excellent-zidCB350EUREF: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:33:17,091 - ERROR - Error fetching https://ninjakitchen.fr/produits/grill-d-interieur-ninja-foodi-max-reconditionne-ag551eudb-etat-correct-zidAG551EUDBREFB: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:33:27,651 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-14-en-1-ninja-foodi-max-reconditionne-ol750eu-etat-excellent-zidOL750EUREF: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:33:30,714 - ERROR - Error fetching https://ninjakitchen.fr/produits/robot-de-cuisine-ninja-avec-auto-iq-reconditionne-bn650eu-etat-excellent-zidBN650EUREF: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:33:38,774 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-tres-bon-etat-zidOL650EUREFA: 404 Client Error: Not Found for url: https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-tres-bon-etat-zidOL650EUREFA
+2024-10-01 08:33:45,273 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-ol650eu-etat-correct-zidOL650EUREFB: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:33:49,259 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-ninja-foodi-op300eu-7-en-1-6l-reconditionne-etat-correct-zidOP300EUREFB: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:33:56,125 - ERROR - Error fetching https://ninjakitchen.fr/produits/blender-2-en-1-ninja-foodi-power-nutri-cb100eu-zidCB100EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:34:10,499 - ERROR - Error fetching https://ninjakitchen.fr/produits/bloc-couteaux-avec-aiguiseur-integre-ninja-foodi-staysharp-set-de-6-pieces-k32006eu-zidK32006EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:34:21,043 - ERROR - Error fetching https://ninjakitchen.fr/produits/friteuse-sans-huile-ninja-foodi-dualzone-7-6-l-reconditionne-af300eurefb-etat-correct-zidAF300EUREFB: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:34:25,147 - ERROR - Error fetching https://ninjakitchen.fr/produits/blender-portable-sans-fil-ninja-blast-noir-bc151eubk-zidBC151EUBK: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:34:28,912 - ERROR - Error fetching https://ninjakitchen.fr/produits/blender-portable-sans-fil-ninja-blast-blanc-bc151euwh-zidBC151EUWH: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:34:35,228 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-etat-excellent-zidOL650EUREF: 404 Client Error: Not Found for url: https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-reconditionne-etat-excellent-zidOL650EUREF
+2024-10-01 08:34:40,098 - INFO - Rerunning 29 skipped URLs...
+2024-10-01 08:34:40,378 - ERROR - Error fetching https://ninjakitchen.fr/produits/ninja-combi-multicuiseur-four-et-friteuse-sans-huile-12-en-1-sfp700eu-zidSFP700EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:34:41,285 - ERROR - Error fetching https://ninjakitchen.fr/produits/friteuse-sans-huile-ninja-air-fryer-max-af160eu-zidAF160EU: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-10-01 08:34:44,334 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-ninja-foodi-op300eu-7-en-1-6l-reconditionne-tres-bon-etat-zidOP300EUREFA: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:34:47,392 - ERROR - Error fetching https://ninjakitchen.fr/produits/multicuiseur-smartlid-12-en-1-ninja-foodi-max-ol650eu-zidOL650EU: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)
+2024-10-01 08:34:55,862 - ERROR - Error fetching https://ninjakitchen.fr/produits/gourde-isotherme-ninja-thirsti-noire-530-ml-zidDW1801EUUKBK: HTTPSConnectionPool(host='ninjakitchen.fr', port=443): Read timed out. (read timeout=3)

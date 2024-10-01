@@ -140,41 +140,22 @@ def save_prices_to_db(df, language, db_name="Sharkninja.db"):
             
             # Get the last price record for this product and country
             cursor.execute("""
-                SELECT Price, EntryDate FROM Prices
+                SELECT Price FROM Prices
                 WHERE ProductID = ? AND CountryID = ?
                 ORDER BY EntryDate DESC LIMIT 1
             """, (product_id, country_id))
             last_price_record = cursor.fetchone()
             
-            if last_price_record:
-                last_price, last_date = last_price_record
-                last_date = datetime.strptime(last_date, "%Y-%m-%d %H:%M:%S")
-                
-                # Check if the price has changed
-                if current_price != last_price:
-                    # Insert the last known price with datetime stamp current datetime - 1 hour
-                    last_known_date = date_obj - timedelta(hours=1)
-                    cursor.execute("""
-                        INSERT INTO Prices (ProductID, CountryID, Price, EntryDate, Reason)
-                        VALUES (?, ?, ?, ?, ?)
-                    """, (product_id, country_id, last_price, last_known_date.strftime("%Y-%m-%d %H:%M:%S"), "Last known price"))
-                    
-                    # Insert the new price with current datetime
-                    cursor.execute("""
-                        INSERT INTO Prices (ProductID, CountryID, Price, EntryDate, Reason)
-                        VALUES (?, ?, ?, ?, ?)
-                    """, (product_id, country_id, current_price, formatted_date, "Newly scraped price"))
-                    
-                    logging.info(f"Price changed for ProductID {product_id}. Old: {last_price}, New: {current_price}")
-                else:
-                    logging.info(f"Price unchanged for ProductID {product_id}. Current: {current_price}")
-            else:
-                # If there's no previous record, insert the current price
+            if last_price_record is None or current_price != last_price_record[0]:
+                # Insert the new price only if it's different or there's no previous record
                 cursor.execute("""
                     INSERT INTO Prices (ProductID, CountryID, Price, EntryDate, Reason)
                     VALUES (?, ?, ?, ?, ?)
-                """, (product_id, country_id, current_price, formatted_date, "First recorded price"))
-                logging.info(f"First price record for ProductID {product_id}. Price: {current_price}")
+                """, (product_id, country_id, current_price, formatted_date, "New price recorded"))
+                
+                logging.info(f"New price recorded for ProductID {product_id}. Price: {current_price}")
+            else:
+                logging.info(f"Price unchanged for ProductID {product_id}. Current: {current_price}")
         
         conn.commit()
     except Exception as e:
