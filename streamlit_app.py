@@ -1,49 +1,79 @@
 import streamlit as st
 from time import sleep
 from navigation import make_sidebar
-import sqlite3
+import pymssql
 from datetime import datetime
 
+# Azure SQL Database connection parameters
+SERVER = 'stockscraper-server.database.windows.net'
+DATABASE = 'stockscraper-database'
+USERNAME = 'stockscraper-server-admin'
+PASSWORD = 'uc$DjSo7J6kqkoak'
+
+# Add this at the beginning of your app, after the imports
+st.markdown("""
+    <style>
+    [data-testid="stSidebarNav"] {display: none;}
+    </style>
+    """, unsafe_allow_html=True)
+
+def get_db_connection():
+    return pymssql.connect(server=SERVER, user=USERNAME, password=PASSWORD, database=DATABASE)
+
 def check_credentials(username, password):
-    conn = sqlite3.connect('Sharkninja.db')
+    conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM swaggers WHERE username = ? AND password = ?", (username, password))
+    cursor.execute("""
+    SELECT * FROM swaggers 
+    WHERE CAST(username AS VARCHAR(MAX)) = %s 
+    AND CAST(password AS VARCHAR(MAX)) = %s
+    """, (username, password))
     result = cursor.fetchone()
     
     # Log the login attempt
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     success = result is not None
-    cursor.execute("INSERT INTO login_logs (username, timestamp, success) VALUES (?, ?, ?)", (username, timestamp, success))
+    cursor.execute("""
+    INSERT INTO login_logs (username, timestamp, success) 
+    VALUES (%s, %s, %s)
+    """, (username, timestamp, success))
     conn.commit()
     
     conn.close()
     return success
 
 def username_exists(username):
-    conn = sqlite3.connect('Sharkninja.db')
+    conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM swaggers WHERE username = ?", (username,))
+    cursor.execute("""
+    SELECT * FROM swaggers 
+    WHERE CAST(username AS VARCHAR(MAX)) = %s
+    """, (username,))
     result = cursor.fetchone()
     conn.close()
     return result is not None
 
 def create_user(username, password):
-    conn = sqlite3.connect('Sharkninja.db')
+    conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO swaggers (username, password) VALUES (?, ?)", (username, password))
+    cursor.execute("""
+    INSERT INTO swaggers (username, password) 
+    VALUES (%s, %s)
+    """, (username, password))
     conn.commit()
     conn.close()
 
 # Add this function to create the login_logs table if it doesn't exist
 def create_login_logs_table():
-    conn = sqlite3.connect('Sharkninja.db')
+    conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS login_logs (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT NOT NULL,
-        timestamp TEXT NOT NULL,
-        success BOOLEAN NOT NULL
+    IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='login_logs' AND xtype='U')
+    CREATE TABLE login_logs (
+        id INT IDENTITY(1,1) PRIMARY KEY,
+        username NVARCHAR(255) NOT NULL,
+        timestamp NVARCHAR(50) NOT NULL,
+        success BIT NOT NULL
     )
     """)
     conn.commit()
@@ -69,6 +99,7 @@ with tab1:
             st.session_state.logged_in = True
             st.success("Logged in successfully!")
             sleep(0.5)
+            # Remove the page switching
             st.switch_page("pages/page1.py")
         else:
             st.error("Incorrect username or password")

@@ -1,14 +1,14 @@
+import pymssql
 import os
 import logging
 from datetime import datetime
-from datetime import timedelta
 import pandas as pd
-import sqlite3
 import requests
 from bs4 import BeautifulSoup
 import time
 from requests.exceptions import Timeout
 import functools
+import random
 
 # Set up logging
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -23,6 +23,125 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
 
+# Azure SQL Database connection details
+DB_HOST = "stockscraper-server.database.windows.net"
+DB_NAME = "stockscraper-database"
+DB_USER = "stockscraper-server-admin"
+DB_PASSWORD = "uc$DjSo7J6kqkoak"
+
+def retry_on_db_error(max_attempts=10, initial_delay=1, max_delay=60):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            delay = initial_delay
+            for attempt in range(max_attempts):
+                try:
+                    return func(*args, **kwargs)
+                except OperationalError as e:
+                    error_details = f"Error Type: {type(e).__name__}, Error Message: {str(e)}"
+                    if attempt == max_attempts - 1:
+                        logging.error(f"Failed to execute database operation after {max_attempts} attempts. {error_details}")
+                        raise
+                    wait = min(delay * (2 ** attempt) + random.uniform(0, 1), max_delay)
+                    logging.warning(f"Database error (Attempt {attempt + 1}/{max_attempts}): {error_details}")
+                    logging.warning(f"Retrying in {wait:.2f} seconds...")
+                    time.sleep(wait)
+            raise OperationalError(f"Unable to execute database operation after {max_attempts} attempts")
+        return wrapper
+    return decorator
+
+@retry_on_db_error(max_attempts=10, initial_delay=1, max_delay=60)
+def get_db_connection():
+    try:
+        return pymssql.connect(server=DB_HOST, user=DB_USER, password=DB_PASSWORD, database=DB_NAME)
+    except OperationalError as e:
+        logging.error(f"Database connection error: {type(e).__name__} - {str(e)}")
+        logging.error(f"Connection details: Host: {DB_HOST}, Database: {DB_NAME}, User: {DB_USER}")
+        raise
+
+def initialize_database():
+    conn = get_db_connection()
+    try:
+        cursor = conn.cursor()
+        
+        # Check and create Countries table
+        cursor.execute("""
+        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Countries' and xtype='U')
+        CREATE TABLE Countries (
+            CountryID INT PRIMARY KEY IDENTITY(1,1),
+            CountryCode NVARCHAR(2) NOT NULL UNIQUE
+        )
+        """)
+        
+        # Check and create Brands table
+        cursor.execute("""
+        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Brands' and xtype='U')
+        CREATE TABLE Brands (
+            BrandID INT PRIMARY KEY IDENTITY(1,1),
+            BrandName NVARCHAR(100) NOT NULL UNIQUE
+        )
+        """)
+        
+        # Check and create Products table
+        cursor.execute("""
+        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Products' and xtype='U')
+        CREATE TABLE Products (
+            ProductID INT PRIMARY KEY IDENTITY(1,1),
+            SKU NVARCHAR(50) NOT NULL UNIQUE,
+            ProductName NVARCHAR(255) NOT NULL
+        )
+        """)
+        
+        # Check and create ProductStatus table
+        cursor.execute("""
+        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='ProductStatus' and xtype='U')
+        CREATE TABLE ProductStatus (
+            StatusID INT PRIMARY KEY IDENTITY(1,1),
+            ProductID INT,
+            CountryID INT,
+            BrandID INT,
+            Date DATETIME,
+            Status NVARCHAR(10),
+            Type NVARCHAR(50),
+            CurrentPrice DECIMAL(10, 2),
+            FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
+            FOREIGN KEY (CountryID) REFERENCES Countries(CountryID),
+            FOREIGN KEY (BrandID) REFERENCES Brands(BrandID)
+        )
+        """)
+        
+        # Check and create Prices table
+        cursor.execute("""
+        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Prices' and xtype='U')
+        CREATE TABLE Prices (
+            PriceID INT PRIMARY KEY IDENTITY(1,1),
+            ProductID INT,
+            CountryID INT,
+            Price DECIMAL(10, 2),
+            EntryDate DATETIME,
+            Reason NVARCHAR(255),
+            FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
+            FOREIGN KEY (CountryID) REFERENCES Countries(CountryID)
+        )
+        """)
+        
+        # Check and create URLs table
+        cursor.execute("""
+        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='urls' and xtype='U')
+        CREATE TABLE urls (
+            URLID INT PRIMARY KEY IDENTITY(1,1),
+            URL NVARCHAR(255) NOT NULL UNIQUE
+        )
+        """)
+        
+        conn.commit()
+        logging.info("Database initialized successfully")
+    except Exception as e:
+        logging.error(f"Error initializing database: {str(e)}")
+        conn.rollback()
+    finally:
+        conn.close()
+
 def extract_id_from_url(url):
     try:
         start_index = url.index("zid") + 3
@@ -31,31 +150,8 @@ def extract_id_from_url(url):
     except ValueError:
         return None
 
-def retry_on_db_locked(max_attempts=5, retry_delay=1):
-    def decorator(func):
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            for attempt in range(max_attempts):
-                try:
-                    return func(*args, **kwargs)
-                except sqlite3.OperationalError as e:
-                    if "database is locked" in str(e) and attempt < max_attempts - 1:
-                        logging.warning(f"Database locked, retrying in {retry_delay} seconds...")
-                        time.sleep(retry_delay)
-                    else:
-                        raise
-            raise sqlite3.OperationalError("Unable to access the database after multiple attempts")
-        return wrapper
-    return decorator
-
-@retry_on_db_locked()
-def get_db_connection(db_name="Sharkninja.db"):
-    conn = sqlite3.connect(db_name, timeout=20)
-    return conn
-
-@retry_on_db_locked()
-def get_or_create_id(table_name, column_name, value, db_name="Sharkninja.db"):
-    conn = get_db_connection(db_name)
+def get_or_create_id(table_name, column_name, value):
+    conn = get_db_connection()
     try:
         cursor = conn.cursor()
         
@@ -66,43 +162,43 @@ def get_or_create_id(table_name, column_name, value, db_name="Sharkninja.db"):
         else:
             id_column = f"{table_name}ID"
         
-        cursor.execute(f"SELECT {id_column} FROM {table_name} WHERE {column_name} = ?", (value,))
+        cursor.execute(f"SELECT {id_column} FROM {table_name} WHERE {column_name} = %s", (value,))
         result = cursor.fetchone()
         
         if result:
             id = result[0]
         else:
-            cursor.execute(f"INSERT INTO {table_name} ({column_name}) VALUES (?)", (value,))
-            id = cursor.lastrowid
+            cursor.execute(f"INSERT INTO {table_name} ({column_name}) VALUES (%s)", (value,))
+            conn.commit()
+            cursor.execute("SELECT SCOPE_IDENTITY()")
+            id = cursor.fetchone()[0]
         
-        conn.commit()
         return id
     finally:
         conn.close()
 
-@retry_on_db_locked()
-def get_or_create_product_id(sku, product_name, db_name="Sharkninja.db"):
-    conn = get_db_connection(db_name)
+def get_or_create_product_id(sku, product_name):
+    conn = get_db_connection()
     try:
         cursor = conn.cursor()
         
-        cursor.execute("SELECT ProductID FROM Products WHERE SKU = ?", (sku,))
+        cursor.execute("SELECT ProductID FROM Products WHERE SKU = %s", (sku,))
         result = cursor.fetchone()
         
         if result:
             product_id = result[0]
         else:
-            # cursor.execute("INSERT INTO Products (SKU, ProductName) VALUES (?, ?)", (sku, product_name))
-            #product_id = cursor.lastrowid
-            print("no id")
-        conn.commit()
+            cursor.execute("INSERT INTO Products (SKU, ProductName) VALUES (%s, %s)", (sku, product_name))
+            conn.commit()
+            cursor.execute("SELECT SCOPE_IDENTITY()")
+            product_id = cursor.fetchone()[0]
+        
         return product_id
     finally:
         conn.close()
 
-@retry_on_db_locked()
-def save_to_db(df, language, brand, db_name="Sharkninja.db"):
-    conn = get_db_connection(db_name)
+def save_to_db(df, language, brand):
+    conn = get_db_connection()
     try:
         cursor = conn.cursor()
         
@@ -112,19 +208,37 @@ def save_to_db(df, language, brand, db_name="Sharkninja.db"):
         for _, row in df.iterrows():
             product_id = get_or_create_product_id(row['SKU'], row['Product Name'])
             
+            # Convert CurrentPrice to float, removing currency symbol and replacing comma with dot
+            current_price = row['Current Price'].replace('€', '').replace(',', '.').strip()
+            try:
+                current_price = float(current_price)
+            except ValueError:
+                logging.warning(f"Invalid price value: {row['Current Price']} for SKU: {row['SKU']}. Setting to None.")
+                current_price = None
+            
             cursor.execute("""
-                INSERT OR REPLACE INTO ProductStatus 
-                (ProductID, CountryID, BrandID, Date, Status, Type, CurrentPrice)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-            """, (product_id, country_id, brand_id, row['Date'], row['Status'], row['Type'], row['Current Price']))
+                MERGE INTO ProductStatus AS target
+                USING (VALUES (%s, %s, %s, %s, %s, %s, %s)) AS source 
+                    (ProductID, CountryID, BrandID, Date, Status, Type, CurrentPrice)
+                ON target.ProductID = source.ProductID AND target.CountryID = source.CountryID
+                WHEN MATCHED THEN
+                    UPDATE SET Date = source.Date, Status = source.Status, 
+                               Type = source.Type, CurrentPrice = source.CurrentPrice
+                WHEN NOT MATCHED THEN
+                    INSERT (ProductID, CountryID, BrandID, Date, Status, Type, CurrentPrice)
+                    VALUES (source.ProductID, source.CountryID, source.BrandID, source.Date, 
+                            source.Status, source.Type, source.CurrentPrice);
+            """, (product_id, country_id, brand_id, row['Date'], row['Status'], row['Type'], current_price))
         
         conn.commit()
+    except Exception as e:
+        logging.error(f"Error in save_to_db: {str(e)}")
+        conn.rollback()
     finally:
         conn.close()
 
-@retry_on_db_locked()
-def save_prices_to_db(df, language, db_name="Sharkninja.db"):
-    conn = get_db_connection(db_name)
+def save_prices_to_db(df, language):
+    conn = get_db_connection()
     try:
         cursor = conn.cursor()
         
@@ -138,19 +252,17 @@ def save_prices_to_db(df, language, db_name="Sharkninja.db"):
             price_str = row['Current Price'].replace('€', '').strip()
             current_price = float(price_str.replace(',', '.'))
             
-            # Get the last price record for this product and country
             cursor.execute("""
-                SELECT Price FROM Prices
-                WHERE ProductID = ? AND CountryID = ?
-                ORDER BY EntryDate DESC LIMIT 1
+                SELECT TOP 1 Price FROM Prices
+                WHERE ProductID = %s AND CountryID = %s
+                ORDER BY EntryDate DESC
             """, (product_id, country_id))
             last_price_record = cursor.fetchone()
             
             if last_price_record is None or current_price != last_price_record[0]:
-                # Insert the new price only if it's different or there's no previous record
                 cursor.execute("""
                     INSERT INTO Prices (ProductID, CountryID, Price, EntryDate, Reason)
-                    VALUES (?, ?, ?, ?, ?)
+                    VALUES (%s, %s, %s, %s, %s)
                 """, (product_id, country_id, current_price, formatted_date, "New price recorded"))
                 
                 logging.info(f"New price recorded for ProductID {product_id}. Price: {current_price}")
@@ -216,8 +328,8 @@ def process_urls(urls):
 
     return out_of_stock_products, in_stock_products, skipped_urls, processed_products
 
-def fetch_urls_from_database(db_name="Sharkninja.db"):
-    conn = get_db_connection(db_name)
+def fetch_urls_from_database():
+    conn = get_db_connection()
     cursor = conn.cursor()
     
     cursor.execute("SELECT url FROM urls")
@@ -324,8 +436,21 @@ def check_stock(grouped_urls):
         logging.info(f"Finished checking {language} {brand}")
         logging.info("-----------------------------------")
 
+def verify_db_connection():
+    try:
+        conn = get_db_connection()
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT 1")
+        logging.info("Database connection verified successfully")
+        conn.close()
+    except Exception as e:
+        logging.critical(f"Failed to verify database connection: {type(e).__name__} - {str(e)}")
+        raise
+
 def main():
     logging.info("Starting stock check")
+    verify_db_connection()  # Add this line
+    initialize_database()
     urls = fetch_urls_from_database()
     grouped_urls = group_urls_by_category(urls)
     check_stock(grouped_urls)
