@@ -13,10 +13,7 @@ import plotly.graph_objects as go
 from requests.exceptions import Timeout
 import logging
 import os
-<<<<<<< HEAD
 import pymssql
-=======
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 
 # Create LOGS folder if it doesn't exist
 if not os.path.exists('LOGS'):
@@ -40,14 +37,11 @@ headers = {
 }
 st.set_page_config(layout="wide")
 st.markdown("""
-<<<<<<< HEAD
     <style>
     [data-testid="stSidebarNav"] {display: none;}
     </style>
     """, unsafe_allow_html=True)
 st.markdown("""
-=======
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 <style>
     .stRadio > label {
         background-color: #f0f2f6;
@@ -95,7 +89,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 make_sidebar()
-<<<<<<< HEAD
 
 # Database connection parameters
 DB_HOST = 'stockscraper-server.database.windows.net'
@@ -229,8 +222,6 @@ def read_from_db(country, brand):
     conn.close()
     return df
 
-=======
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 def extract_id_from_url(url):
     """Extracts the part of the URL that comes after 'zid'."""
     with st.spinner("bezig met extract"):
@@ -240,10 +231,7 @@ def extract_id_from_url(url):
             return zid_part
         except ValueError:
             return None
-<<<<<<< HEAD
 
-=======
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 def get_data(country, brand, status):
     db_name = "Sharkninja.db"
     conn = sqlite3.connect(db_name)
@@ -262,16 +250,9 @@ def get_data(country, brand, status):
     df['LatestDate'] = pd.to_datetime(df['LatestDate'])
     st.write("hallo")
     return df
-<<<<<<< HEAD
 
 def get_dataframe_init(country, brand):
     conn = get_db_connection()
-=======
-def get_dataframe_init(country, brand):
-    db_name = "Sharkninja.db"
-    conn = sqlite3.connect(db_name)
-
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
     query = """
     SELECT p.SKU, ps.Date as LatestDate, ps.Status
     FROM Products p
@@ -283,7 +264,6 @@ def get_dataframe_init(country, brand):
         FROM ProductStatus ps
         JOIN Countries c ON ps.CountryID = c.CountryID
         JOIN Brands b ON ps.BrandID = b.BrandID
-<<<<<<< HEAD
         WHERE c.CountryCode = %s AND b.BrandName = %s AND ps.Status IN ('IN', 'OUT')
         GROUP BY ps.ProductID
     ) latest ON ps.ProductID = latest.ProductID AND ps.Date = latest.LatestDate
@@ -295,18 +275,6 @@ def get_dataframe_init(country, brand):
     conn.close()
     return df
 
-=======
-        WHERE c.CountryCode = ? AND b.BrandName = ? AND ps.Status IN ('IN', 'OUT')
-        GROUP BY ps.ProductID
-    ) latest ON ps.ProductID = latest.ProductID AND ps.Date = latest.LatestDate
-    WHERE c.CountryCode = ? AND b.BrandName = ?
-    ORDER BY ps.Date DESC;
-    """
-    
-    df = pd.read_sql_query(query, conn, params=(country, brand, country, brand))
-    conn.close()
-    return df
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 def fetch_urls_from_database(db_name="Sharkninja.db"):
     conn = sqlite3.connect(db_name)
     cursor = conn.cursor()
@@ -340,74 +308,6 @@ def group_urls_by_category(urls):
                 grouped_urls[key] = []
             grouped_urls[key].append(url)
     return grouped_urls
-<<<<<<< HEAD
-=======
-##sidebar functions
-def save_to_db(df, db_name="Sharkninja.db"):
-    logger.info(f"Saving {len(df)} rows to database")
-    conn = sqlite3.connect(db_name)
-    cursor = conn.cursor()
-    
-    for _, row in df.iterrows():
-        try:
-            # Insert or get CountryID
-            cursor.execute("INSERT OR IGNORE INTO Countries (CountryCode) VALUES (?)", (row['Country'],))
-            cursor.execute("SELECT CountryID FROM Countries WHERE CountryCode = ?", (row['Country'],))
-            country_id = cursor.fetchone()[0]
-
-            # Insert or get BrandID
-            cursor.execute("INSERT OR IGNORE INTO Brands (BrandName) VALUES (?)", (row['Brand'],))
-            cursor.execute("SELECT BrandID FROM Brands WHERE BrandName = ?", (row['Brand'],))
-            brand_id = cursor.fetchone()[0]
-
-            # Insert or get ProductID
-            cursor.execute("INSERT OR IGNORE INTO Products (SKU, ProductName) VALUES (?, ?)", (row['SKU'], row['Product Name']))
-            cursor.execute("SELECT ProductID FROM Products WHERE SKU = ?", (row['SKU'],))
-            product_id = cursor.fetchone()[0]
-
-            # Insert or get URL ID
-            cursor.execute("INSERT OR IGNORE INTO URLs (URL) VALUES (?)", (row['URL'],))
-            cursor.execute("SELECT rowid FROM URLs WHERE URL = ?", (row['URL'],))
-            url_id = cursor.fetchone()[0]
-
-            # Insert into SKU_URL junction table
-            cursor.execute("INSERT OR IGNORE INTO SKU_URL (SKUID, URLID) VALUES (?, ?)", (product_id, url_id))
-
-            # Insert into ProductStatus (now without URL)
-            cursor.execute("""
-            INSERT OR REPLACE INTO ProductStatus 
-            (ProductID, CountryID, BrandID, Date, Status, Type, CurrentPrice)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-            """, (product_id, country_id, brand_id, row['Date'], row['Status'], row['Type'], row['Current Price']))
-
-            conn.commit()
-            logger.info(f"Successfully saved data for SKU {row['SKU']}")
-
-        except Exception as e:
-            logger.error(f"Error saving data for SKU {row['SKU']}: {e}")
-            conn.rollback()
-
-    conn.close()
-    logger.info("Database connection closed")
-
-    st.success("All records processed. Check logs for details on any errors.")
-
-def read_from_db(country, brand, db_name="Sharkninja.db"):
-    conn = sqlite3.connect(db_name)
-    query = """
-    SELECT p.SKU, p.ProductName, ps.Date, u.URL, ps.Status, ps.Type, ps.CurrentPrice, c.CountryCode, b.BrandName
-    FROM ProductStatus ps
-    JOIN Products p ON ps.ProductID = p.ProductID
-    JOIN Countries c ON ps.CountryID = c.CountryID
-    JOIN Brands b ON ps.BrandID = b.BrandID
-    JOIN SKU_URL su ON p.ProductID = su.SKUID
-    JOIN URLs u ON su.URLID = u.rowid
-    WHERE c.CountryCode = ? AND b.BrandName = ?
-    """
-    df = pd.read_sql(query, conn, params=(country, brand))
-    conn.close()
-    return df
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 
 def export_to_excel(out_of_stock_df, in_stock_df, skipped_df):
     output = io.BytesIO()
@@ -419,10 +319,7 @@ def export_to_excel(out_of_stock_df, in_stock_df, skipped_df):
         except:
             print("nice")
     return output.getvalue()
-<<<<<<< HEAD
 
-=======
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 def get_out_of_stock_date(country, brand):
     db_name = "Sharkninja.db"
     conn = sqlite3.connect(db_name)
@@ -455,16 +352,9 @@ def get_out_of_stock_date(country, brand):
     df['Days out of stock'] = (current_date - df['OutOfStockDate']).dt.days
 
     return df
-<<<<<<< HEAD
 
 def get_current_out_of_stock(country, brand):
     conn = get_db_connection()
-=======
-def get_current_out_of_stock(country, brand):
-    db_name = "Sharkninja.db"
-    conn = sqlite3.connect(db_name)
-    
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
     query = """
     WITH ranked_status AS (
         SELECT 
@@ -477,11 +367,7 @@ def get_current_out_of_stock(country, brand):
         JOIN ProductStatus ps ON p.ProductID = ps.ProductID
         JOIN Countries c ON ps.CountryID = c.CountryID
         JOIN Brands b ON ps.BrandID = b.BrandID
-<<<<<<< HEAD
         WHERE c.CountryCode = %s AND b.BrandName = %s
-=======
-        WHERE c.CountryCode = ? AND b.BrandName = ?
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
     ),
     current_status AS (
         SELECT SKU, Date, Status
@@ -499,31 +385,19 @@ def get_current_out_of_stock(country, brand):
     SELECT 
         cs.SKU, 
         eod.EarliestOutDate as LastOutOfStockDate,
-<<<<<<< HEAD
         DATEDIFF(day, eod.EarliestOutDate, GETDATE()) as DaysOutOfStock
-=======
-        CAST((JULIANDAY('now') - JULIANDAY(eod.EarliestOutDate)) AS INTEGER) as DaysOutOfStock
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
     FROM current_status cs
     JOIN earliest_out_date eod ON cs.SKU = eod.SKU
     WHERE cs.Status = 'OUT'
     ORDER BY DaysOutOfStock DESC
     """
     
-<<<<<<< HEAD
     df = pd.read_sql(query, conn, params=(country, brand))
     conn.close()
     
     df['LastOutOfStockDate'] = pd.to_datetime(df['LastOutOfStockDate'])
     return df
 
-=======
-    df = pd.read_sql_query(query, conn, params=(country, brand))
-    conn.close()
-    
-    df['LastOutOfStockDate'] = pd.to_datetime(df['LastOutOfStockDate'], format="%Y-%m-%d %H:%M:%S")
-    return df
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 def check_availability(urls):
     out_of_stock_products = []
     in_stock_products = []
@@ -583,10 +457,7 @@ def check_availability(urls):
         progress_placeholder.empty()
 
     return out_of_stock_products, in_stock_products, skipped_urls
-<<<<<<< HEAD
 
-=======
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 def process_urls(urls, existing_products=None):
     if existing_products is None:
         existing_products = set()
@@ -621,10 +492,7 @@ def process_urls(urls, existing_products=None):
     status_text.empty()
 
     return out_of_stock_products, in_stock_products, skipped_urls, existing_products
-<<<<<<< HEAD
 
-=======
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 def get_or_create_id(table_name, column_name, value, db_name="Sharkninja.db"):
     conn = sqlite3.connect(db_name)
     try:
@@ -650,10 +518,7 @@ def get_or_create_id(table_name, column_name, value, db_name="Sharkninja.db"):
         return id
     finally:
         conn.close()
-<<<<<<< HEAD
 
-=======
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 def get_or_create_product_id(sku, product_name, db_name="Sharkninja.db"):
     conn = sqlite3.connect(db_name)
     try:
@@ -784,35 +649,19 @@ def get_out_of_stock_duration(country, brand):
     return df
 
 def get_out_of_stock_history(country, brand):
-<<<<<<< HEAD
     conn = get_db_connection()
-=======
-    db_name = "Sharkninja.db"
-    conn = sqlite3.connect(db_name)
-    
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
     query = """
     WITH status_changes AS (
         SELECT 
             p.SKU, 
-<<<<<<< HEAD
             ps.Date AS DateTime,
             ps.Status,
             LAG(ps.Status) OVER (PARTITION BY p.SKU ORDER BY ps.Date) AS prev_status
-=======
-            datetime(ps.Date) AS DateTime,
-            ps.Status,
-            LAG(ps.Status) OVER (PARTITION BY p.SKU ORDER BY datetime(ps.Date)) AS prev_status
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
         FROM Products p
         JOIN ProductStatus ps ON p.ProductID = ps.ProductID
         JOIN Countries c ON ps.CountryID = c.CountryID
         JOIN Brands b ON ps.BrandID = b.BrandID
-<<<<<<< HEAD
         WHERE c.CountryCode = %s AND b.BrandName = %s
-=======
-        WHERE c.CountryCode = ? AND b.BrandName = ?
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
     ),
     out_of_stock_periods AS (
         SELECT 
@@ -832,34 +681,20 @@ def get_out_of_stock_history(country, brand):
         BackInStockDate,
         CASE 
             WHEN BackInStockDate IS NOT NULL THEN 
-<<<<<<< HEAD
                 DATEDIFF(day, OutOfStockDate, BackInStockDate)
             ELSE 
                 DATEDIFF(day, OutOfStockDate, GETDATE())
-=======
-                MAX(1, CAST((JULIANDAY(BackInStockDate) - JULIANDAY(OutOfStockDate)) AS INTEGER))
-            ELSE 
-                CAST((JULIANDAY('now') - JULIANDAY(OutOfStockDate)) AS INTEGER)
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
         END AS DaysOutOfStock
     FROM out_of_stock_periods
     ORDER BY SKU, OutOfStockDate DESC
     """
     
-<<<<<<< HEAD
     df = pd.read_sql(query, conn, params=(country, brand))
-=======
-    df = pd.read_sql_query(query, conn, params=(country, brand))
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
     conn.close()
     
     df['OutOfStockDate'] = pd.to_datetime(df['OutOfStockDate'])
     df['BackInStockDate'] = pd.to_datetime(df['BackInStockDate'])
     
-<<<<<<< HEAD
-=======
-    # Calculate the current out-of-stock duration for 'Current' status
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
     df['Status'] = df['BackInStockDate'].apply(lambda x: 'Historical' if pd.notnull(x) else 'Currently out of stock')
     
     return df
@@ -1132,8 +967,4 @@ with tab3:
 
 
 # Add a footer
-<<<<<<< HEAD
 st.markdown("---")
-=======
-st.markdown("---")
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
