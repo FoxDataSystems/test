@@ -1,6 +1,5 @@
 from navigation import make_sidebar
 import streamlit as st
-import sqlite3
 import pandas as pd
 from datetime import datetime
 from datetime import timedelta
@@ -232,24 +231,8 @@ def extract_id_from_url(url):
         except ValueError:
             return None
 
-def get_data(country, brand, status):
-    db_name = "Sharkninja.db"
-    conn = sqlite3.connect(db_name)
-    
-    query = """
-    SELECT SKU, MAX(Date) as LatestDate, Status
-    FROM products
-    WHERE Country = ? AND Brand = ? AND Status = ?
-    GROUP BY SKU
-    ORDER BY LatestDate DESC
-    """
-    st.write(query)
-    df = pd.read_sql_query(query, conn, params=(country_code, brand_name, status))
-    conn.close()
-    
-    df['LatestDate'] = pd.to_datetime(df['LatestDate'])
-    st.write("hallo")
-    return df
+
+
 
 def get_dataframe_init(country, brand):
     conn = get_db_connection()
@@ -275,16 +258,7 @@ def get_dataframe_init(country, brand):
     conn.close()
     return df
 
-def fetch_urls_from_database(db_name="Sharkninja.db"):
-    conn = sqlite3.connect(db_name)
-    cursor = conn.cursor()
-    
-    cursor.execute("SELECT url FROM urls")
-    urls = cursor.fetchall()
-    
-    conn.close()
-    
-    return [url[0] for url in urls]
+
 
 def categorize_url(url):
     if "ninjakitchen.fr" in url:
@@ -320,38 +294,6 @@ def export_to_excel(out_of_stock_df, in_stock_df, skipped_df):
             print("nice")
     return output.getvalue()
 
-def get_out_of_stock_date(country, brand):
-    db_name = "Sharkninja.db"
-    conn = sqlite3.connect(db_name)
-    
-    query = """
-    SELECT t1.SKU, t1.Date as OutOfStockDate
-    FROM products t1
-    INNER JOIN (
-        SELECT SKU, MAX(Date) as MaxDate
-        FROM products
-        WHERE Country = ? AND Brand = ? AND Status = 'OUT'
-        GROUP BY SKU
-    ) t2 ON t1.SKU = t2.SKU AND t1.Date = t2.MaxDate
-    WHERE t1.Country = ? AND t1.Brand = ? AND t1.Status = 'OUT'
-    AND NOT EXISTS (
-        SELECT 1
-        FROM products t3
-        WHERE t3.SKU = t1.SKU AND t3.Country = ? AND t3.Brand = ?
-        AND t3.Date > t1.Date
-        AND t3.Status = 'IN'
-    )
-    ORDER BY t1.Date DESC;
-    """
-    
-    df = pd.read_sql_query(query, conn, params=(country, brand, country, brand, country, brand))
-    conn.close()
-    
-    df['OutOfStockDate'] = pd.to_datetime(df['OutOfStockDate'])
-    current_date = datetime.now()
-    df['Days out of stock'] = (current_date - df['OutOfStockDate']).dt.days
-
-    return df
 
 def get_current_out_of_stock(country, brand):
     conn = get_db_connection()
@@ -493,160 +435,8 @@ def process_urls(urls, existing_products=None):
 
     return out_of_stock_products, in_stock_products, skipped_urls, existing_products
 
-def get_or_create_id(table_name, column_name, value, db_name="Sharkninja.db"):
-    conn = sqlite3.connect(db_name)
-    try:
-        cursor = conn.cursor()
-        
-        if table_name == "Countries":
-            id_column = "CountryID"
-        elif table_name.endswith('s'):
-            id_column = f"{table_name[:-1]}ID"
-        else:
-            id_column = f"{table_name}ID"
-        
-        cursor.execute(f"SELECT {id_column} FROM {table_name} WHERE {column_name} = ?", (value,))
-        result = cursor.fetchone()
-        
-        if result:
-            id = result[0]
-        else:
-            cursor.execute(f"INSERT INTO {table_name} ({column_name}) VALUES (?)", (value,))
-            id = cursor.lastrowid
-        
-        conn.commit()
-        return id
-    finally:
-        conn.close()
 
-def get_or_create_product_id(sku, product_name, db_name="Sharkninja.db"):
-    conn = sqlite3.connect(db_name)
-    try:
-        cursor = conn.cursor()
-        
-        cursor.execute("SELECT ProductID FROM Products WHERE SKU = ?", (sku,))
-        result = cursor.fetchone()
-        
-        if result:
-            product_id = result[0]
-        else:
-            # cursor.execute("INSERT INTO Products (SKU, ProductName) VALUES (?, ?)", (sku, product_name))
-            #product_id = cursor.lastrowid
-            print("no id")
-        conn.commit()
-        return product_id
-    finally:
-        conn.close()
 
-def save_prices_to_db(df, language, db_name="Sharkninja.db"):
-    logger.info(f"save_prices_to_db function called with {len(df)} rows")
-    conn = sqlite3.connect(db_name)
-    try:
-        cursor = conn.cursor()
-        
-        logger.info(f"Getting country ID for language: {language}")
-        country_id = get_or_create_id("Countries", "CountryCode", language)
-        logger.info(f"Country ID: {country_id}")
-        
-        for index, row in df.iterrows():
-            try:
-                logger.info(f"Processing row {index}: SKU={row['SKU']}, Product Name={row['Product Name']}")
-                product_id = get_or_create_product_id(row['SKU'], row['Product Name'])
-                logger.info(f"Product ID: {product_id}")
-                
-                date_obj = datetime.strptime(row['Date'], "%Y-%m-%d %H:%M:%S")
-                formatted_date = date_obj.strftime("%Y-%m-%d %H:%M:%S")
-                
-                price_str = row['Current Price'].replace('€', '').strip()
-                current_price = float(price_str.replace(',', '.'))
-                logger.info(f"Current price: {current_price}")
-                
-                # Get the last price record for this product and country
-                cursor.execute("""
-                    SELECT Price, EntryDate FROM Prices
-                    WHERE ProductID = ? AND CountryID = ?
-                    ORDER BY EntryDate DESC LIMIT 1
-                """, (product_id, country_id))
-                last_price_record = cursor.fetchone()
-                
-                if last_price_record:
-                    last_price, last_date = last_price_record
-                    last_date = datetime.strptime(last_date, "%Y-%m-%d %H:%M:%S")
-                    logger.info(f"Last price record: Price={last_price}, Date={last_date}")
-                    
-                    # Check if the price has changed
-                    if current_price != last_price:
-                        # Insert the last known price with datetime stamp current datetime - 1 hour
-                        insert_date = date_obj - timedelta(hours=1)
-                        logger.info(f"Price changed. Inserting last known price with date: {insert_date}")
-                        cursor.execute("""
-                            INSERT INTO Prices (ProductID, CountryID, Price, EntryDate, Reason)
-                            VALUES (?, ?, ?, ?, ?)
-                        """, (product_id, country_id, last_price, insert_date.strftime("%Y-%m-%d %H:%M:%S"), "Last known price"))
-                        
-                        # Insert the new price with current datetime
-                        logger.info(f"Inserting new price with date: {date_obj}")
-                        cursor.execute("""
-                            INSERT INTO Prices (ProductID, CountryID, Price, EntryDate, Reason)
-                            VALUES (?, ?, ?, ?, ?)
-                        """, (product_id, country_id, current_price, formatted_date, "Newly scraped price"))
-                    else:
-                        logger.info("Price unchanged, no new record inserted")
-                else:
-                    logger.info("No previous price record, inserting first record")
-                    # If there's no previous record, insert the current price
-                    cursor.execute("""
-                        INSERT INTO Prices (ProductID, CountryID, Price, EntryDate, Reason)
-                        VALUES (?, ?, ?, ?, ?)
-                    """, (product_id, country_id, current_price, formatted_date, "First recorded price"))
-                
-                conn.commit()
-                logger.info("Price record(s) committed to database")
-            except Exception as e:
-                logger.error(f"Error processing row: {row}")
-                logger.error(f"Error details: {str(e)}")
-                logger.exception("Detailed error information:")
-                conn.rollback()
-        
-    except Exception as e:
-        logger.error(f"Error in save_prices_to_db: {str(e)}")
-        logger.exception("Detailed error information:")
-    finally:
-        conn.close()
-        logger.info("Database connection closed")
-
-def get_out_of_stock_duration(country, brand):
-    db_name = "Sharkninja.db"
-    conn = sqlite3.connect(db_name)
-    
-    query = """
-    WITH status_changes AS (
-        SELECT 
-            SKU, 
-            Date, 
-            Status,
-            LAG(Status) OVER (PARTITION BY SKU ORDER BY Date) AS prev_status,
-            LAG(Date) OVER (PARTITION BY SKU ORDER BY Date) AS prev_date
-        FROM products
-        WHERE Country = ? AND Brand = ?
-    )
-    SELECT 
-        SKU, 
-        Date AS BackInStockDate, 
-        prev_date AS OutOfStockDate,
-        CAST((JULIANDAY(Date) - JULIANDAY(prev_date)) AS INTEGER) AS DaysOutOfStock
-    FROM status_changes
-    WHERE Status = 'IN' AND prev_status = 'OUT'
-    ORDER BY Date DESC
-    """
-    
-    df = pd.read_sql_query(query, conn, params=(country, brand))
-    conn.close()
-    
-    # Convert dates to datetime
-    df['BackInStockDate'] = pd.to_datetime(df['BackInStockDate'])
-    df['OutOfStockDate'] = pd.to_datetime(df['OutOfStockDate'])
-    return df
 
 def get_out_of_stock_history(country, brand):
     conn = get_db_connection()
@@ -745,7 +535,6 @@ with col3:
     
     
 with col3:
-    check_stock_button = st.button("Check Stock", key="check_stock")
     if st.button("Export to Excel", key="export_excel"):
         try:
             out_of_stock_df = read_from_db(country_code, brand_name)
@@ -769,94 +558,6 @@ with col3:
 
 
 # Stock checking logic
-if check_stock_button:
-    try:
-        urls = fetch_urls_from_database()
-        grouped_urls = group_urls_by_category(urls)
-
-        # Filter URLs based on selected country and brand
-        selected_category = f"{country_code}{brand_name}"
-        if selected_category in grouped_urls:
-            category_urls = grouped_urls[selected_category]
-            
-            # Initialize empty DataFrames
-            out_of_stock_df = pd.DataFrame(columns=["SKU", "Product Name", "Date", "URL", "Status", "Type", "Current Price"])
-            in_stock_df = pd.DataFrame(columns=["SKU", "Product Name", "Date", "URL", "Status", "Type", "Current Price"])
-
-            with st.spinner(f"Processing URLs for {country_code} {brand_name}..."):
-                (out_of_stock_products, in_stock_products, skipped_urls, processed_products,) = process_urls(category_urls)
-
-            if skipped_urls:
-                st.warning(f"Rerunning {len(skipped_urls)} skipped URLs for {country_code} {brand_name}...")
-                with st.spinner("Reprocessing skipped URLs..."):
-                    (additional_out_of_stock, additional_in_stock, remaining_skipped, processed_products,) = process_urls(skipped_urls, processed_products)
-
-                out_of_stock_products.extend(additional_out_of_stock)
-                in_stock_products.extend(additional_in_stock)
-                skipped_urls = remaining_skipped
-
-            try:
-                if out_of_stock_products:
-                    out_of_stock_df = pd.DataFrame(
-                        out_of_stock_products,
-                        columns=["SKU", "Product Name", "Date", "URL", "Status", "Type", "Current Price"],
-                    )
-                    out_of_stock_df["Country"] = country_code
-                    out_of_stock_df["Brand"] = brand_name
-                    save_to_db(out_of_stock_df)
-                    st.success(f"Updated {len(out_of_stock_products)} out-of-stock products for {country_code} {brand_name}")
-                else:
-                    st.write(f"All products are in stock for {country_code} {brand_name}.")
-
-                if in_stock_products:
-                    in_stock_df = pd.DataFrame(
-                        in_stock_products,
-                        columns=["SKU", "Product Name", "Date", "URL", "Status", "Type", "Current Price"],
-                    )
-                    in_stock_df["Country"] = country_code
-                    in_stock_df["Brand"] = brand_name
-                    save_to_db(in_stock_df)
-                    st.success(f"Updated {len(in_stock_products)} in-stock products for {country_code} {brand_name}")
-                else:
-                    st.write(f"No products are in stock for {country_code} {brand_name}.")
-
-                # Combine DataFrames and save prices
-                all_products_df = pd.concat([out_of_stock_df, in_stock_df], ignore_index=True)
-                st.write(f"Total products to update prices: {len(all_products_df)}")
-                if not all_products_df.empty:
-                    logger.info("Attempting to save prices to database")
-                    try:
-                        save_prices_to_db(all_products_df, country_code)
-                        success_message = f"Prices saved successfully for {country_code} {brand_name}."
-                        st.success(success_message)
-                        logger.info(success_message)
-                    except Exception as e:
-                        error_message = f"An error occurred while saving prices: {str(e)}"
-                        st.error(error_message)
-                        logger.error(error_message)
-                        logger.exception("Detailed error information:")
-                else:
-                    warning_message = f"No products found to save prices for {country_code} {brand_name}."
-                    st.warning(warning_message)
-                    logger.warning(warning_message)
-                
-                if skipped_urls:
-                    skipped_df = pd.DataFrame(skipped_urls, columns=["URL"])
-                    skipped_df["Country"] = country_code
-                    skipped_df["Brand"] = brand_name
-                    save_to_db(skipped_df, f"skipped_urls_{country_code}_{brand_name}")
-                    st.warning(f"{len(skipped_urls)} URLs were skipped after retrying for {country_code} {brand_name}.")
-                else:
-                    st.success(f"No URLs were skipped in the end for {country_code} {brand_name}.")
-            except Exception as e:
-                st.error(f"An error occurred while saving products to the database: {e}")
-        else:
-            st.warning(f"No URLs found for the selected country ({country_code}) and brand ({brand_name}).")
-
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
-    st.rerun()
-
 
 col1, col2 = st.columns(2)
 
