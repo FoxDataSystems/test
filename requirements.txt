@@ -3,10 +3,6 @@ pandas
 requests
 beautifulsoup4
 streamlit
-pandas
-sqlite3
-beautifulsoup4
 requests
 plotly
-pymssql
 xlsxwriter
