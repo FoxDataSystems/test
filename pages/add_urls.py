@@ -1,5 +1,4 @@
 import streamlit as st
-<<<<<<< HEAD
 import pymssql
 from navigation import make_sidebar
 import pandas as pd
@@ -27,26 +26,11 @@ def setup_database():
     CREATE TABLE urls (
         id INT IDENTITY(1,1) PRIMARY KEY,
         url VARCHAR(255) UNIQUE
-=======
-import sqlite3
-from navigation import make_sidebar
-import pandas as pd
-make_sidebar()
-
-def setup_database(db_name="Sharkninja.db"):
-    conn = sqlite3.connect(db_name)
-    cursor = conn.cursor()
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS urls (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        url TEXT UNIQUE
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
     )
     ''')
     conn.commit()
     conn.close()
 
-<<<<<<< HEAD
 def add_url_to_database(url):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -56,29 +40,13 @@ def add_url_to_database(url):
         conn.commit()
         return True
     except pymssql.IntegrityError:
-=======
-def add_url_to_database(url, db_name="Sharkninja.db"):
-    conn = sqlite3.connect(db_name)
-    cursor = conn.cursor()
-    
-    try:
-        cursor.execute("INSERT INTO urls (url) VALUES (?)", (url,))
-        conn.commit()
-        return True
-    except sqlite3.IntegrityError:
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
         # URL already exists
         return False
     finally:
         conn.close()
 
-<<<<<<< HEAD
 def get_all_urls_from_database():
     conn = get_db_connection()
-=======
-def get_all_urls_from_database(db_name="Sharkninja.db"):
-    conn = sqlite3.connect(db_name)
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
     cursor = conn.cursor()
     
     cursor.execute("SELECT url FROM urls")
@@ -87,37 +55,21 @@ def get_all_urls_from_database(db_name="Sharkninja.db"):
     conn.close()
     return urls
 
-<<<<<<< HEAD
 def search_urls(search_term):
     conn = get_db_connection()
     cursor = conn.cursor()
     
     cursor.execute("SELECT url FROM urls WHERE url LIKE %s", (f'%{search_term}%',))
-=======
-def search_urls(search_term, db_name="Sharkninja.db"):
-    conn = sqlite3.connect(db_name)
-    cursor = conn.cursor()
-    
-    cursor.execute("SELECT url FROM urls WHERE url LIKE ?", (f'%{search_term}%',))
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
     urls = [row[0] for row in cursor.fetchall()]
     
     conn.close()
     return urls
 
-<<<<<<< HEAD
 def remove_url_from_database(url):
     conn = get_db_connection()
     cursor = conn.cursor()
     
     cursor.execute("DELETE FROM urls WHERE url = %s", (url,))
-=======
-def remove_url_from_database(url, db_name="Sharkninja.db"):
-    conn = sqlite3.connect(db_name)
-    cursor = conn.cursor()
-    
-    cursor.execute("DELETE FROM urls WHERE url = ?", (url,))
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
     conn.commit()
     
     removed = cursor.rowcount > 0
@@ -190,8 +142,4 @@ def main():
                 st.info("No matching URLs found.")
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     main()
-=======
-    main()
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9

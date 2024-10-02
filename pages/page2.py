@@ -1,17 +1,12 @@
 from navigation import make_sidebar
 import streamlit as st
-<<<<<<< HEAD
 import pymssql
-=======
-import sqlite3
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 import pandas as pd
 import plotly.express as px
 from datetime import date, datetime
 import io
 
 st.set_page_config(layout="wide", page_title="SKU Price Manager")
-<<<<<<< HEAD
 st.markdown("""
     <style>
     [data-testid="stSidebarNav"] {display: none;}
@@ -28,50 +23,28 @@ DB_PASSWORD = 'uc$DjSo7J6kqkoak'
 class PriceManager:
     def __init__(self):
         self.conn = pymssql.connect(server=DB_HOST, user=DB_USER, password=DB_PASSWORD, database=DB_NAME)
-=======
-make_sidebar()
-
-class PriceManager:
-    def __init__(self, db_name='Sharkninja.db'):
-        self.conn = sqlite3.connect(db_name)
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
         self.cursor = self.conn.cursor()
 
     def upsert_price(self, sku, price, entry_date, reason, country):
         # Get ProductID and CountryID
-<<<<<<< HEAD
         self.cursor.execute("SELECT ProductID FROM Products WHERE SKU = %s", (sku,))
         product_id = self.cursor.fetchone()
         if not product_id:
             self.cursor.execute("INSERT INTO Products (SKU, ProductName) VALUES (%s, %s)", (sku, f"Product {sku}"))
-=======
-        self.cursor.execute("SELECT ProductID FROM Products WHERE SKU = ?", (sku,))
-        product_id = self.cursor.fetchone()
-        if not product_id:
-            self.cursor.execute("INSERT INTO Products (SKU, ProductName) VALUES (?, ?)", (sku, f"Product {sku}"))
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
             product_id = self.cursor.lastrowid
         else:
             product_id = product_id[0]
 
-<<<<<<< HEAD
         self.cursor.execute("SELECT CountryID FROM Countries WHERE CountryCode = %s", (country,))
         country_id = self.cursor.fetchone()
         if not country_id:
             self.cursor.execute("INSERT INTO Countries (CountryCode) VALUES (%s)", (country,))
-=======
-        self.cursor.execute("SELECT CountryID FROM Countries WHERE CountryCode = ?", (country,))
-        country_id = self.cursor.fetchone()
-        if not country_id:
-            self.cursor.execute("INSERT INTO Countries (CountryCode) VALUES (?)", (country,))
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
             country_id = self.cursor.lastrowid
         else:
             country_id = country_id[0]
 
         # Insert or update price
         self.cursor.execute('''
-<<<<<<< HEAD
             MERGE INTO Prices AS target
             USING (VALUES (%s, %s, %s, %s, %s)) AS source (ProductID, CountryID, Price, EntryDate, Reason)
             ON target.ProductID = source.ProductID AND target.CountryID = source.CountryID AND target.EntryDate = source.EntryDate
@@ -81,13 +54,6 @@ class PriceManager:
                 INSERT (ProductID, CountryID, Price, EntryDate, Reason)
                 VALUES (source.ProductID, source.CountryID, source.Price, source.EntryDate, source.Reason)
         ''', (product_id, country_id, price, entry_date, reason))
-=======
-            INSERT INTO Prices (ProductID, CountryID, Price, EntryDate, Reason) 
-            VALUES (?, ?, ?, ?, ?)
-            ON CONFLICT(ProductID, CountryID, EntryDate) 
-            DO UPDATE SET Price = ?, Reason = ?
-        ''', (product_id, country_id, price, entry_date, reason, price, reason))
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
         self.conn.commit()
 
     def get_price_history(self, sku, country=None, days=None):
@@ -96,7 +62,6 @@ class PriceManager:
             FROM Prices p
             JOIN Products pr ON p.ProductID = pr.ProductID
             JOIN Countries c ON p.CountryID = c.CountryID
-<<<<<<< HEAD
             WHERE pr.SKU = %s
         '''
         params = [sku]
@@ -107,43 +72,20 @@ class PriceManager:
             query += f" AND p.EntryDate >= DATEADD(day, -{days}, GETDATE())"
         query += " ORDER BY p.EntryDate DESC"
         return pd.read_sql(query, self.conn, params=params)
-=======
-            WHERE pr.SKU = ?
-        '''
-        params = [sku]
-        if country:
-            query += " AND c.CountryCode = ?"
-            params.append(country)
-        if days:
-            query += f" AND p.EntryDate >= date('now', '-{days} days')"
-        query += " ORDER BY p.EntryDate DESC"
-        return pd.read_sql_query(query, self.conn, params=params)
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 
     def delete_entry(self, sku, entry_date, country):
         self.cursor.execute('''
             DELETE FROM Prices 
-<<<<<<< HEAD
             WHERE ProductID = (SELECT ProductID FROM Products WHERE SKU = %s)
             AND CountryID = (SELECT CountryID FROM Countries WHERE CountryCode = %s)
             AND EntryDate = %s
-=======
-            WHERE ProductID = (SELECT ProductID FROM Products WHERE SKU = ?)
-            AND CountryID = (SELECT CountryID FROM Countries WHERE CountryCode = ?)
-            AND EntryDate = ?
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
         ''', (sku, country, entry_date))
         self.conn.commit()
         return self.cursor.rowcount
 
     def search_skus(self, term):
-<<<<<<< HEAD
         return pd.read_sql("SELECT DISTINCT SKU FROM Products WHERE SKU LIKE %s",
                            self.conn, params=(f'%{term}%',))['SKU'].tolist()
-=======
-        return pd.read_sql_query("SELECT DISTINCT SKU FROM Products WHERE SKU LIKE ?",
-                                 self.conn, params=(f'%{term}%',))['SKU'].tolist()
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 
     def export_data(self):
         query = '''
@@ -152,11 +94,7 @@ class PriceManager:
             JOIN Products pr ON p.ProductID = pr.ProductID
             JOIN Countries c ON p.CountryID = c.CountryID
         '''
-<<<<<<< HEAD
         df = pd.read_sql(query, self.conn)
-=======
-        df = pd.read_sql_query(query, self.conn)
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
         output = io.BytesIO()
         with pd.ExcelWriter(output, engine='openpyxl') as writer:
             df.to_excel(writer, index=False, sheet_name='Prices')
@@ -168,39 +106,12 @@ class PriceManager:
             FROM Prices p
             JOIN Products pr ON p.ProductID = pr.ProductID
             JOIN Countries c ON p.CountryID = c.CountryID
-<<<<<<< HEAD
             WHERE p.EntryDate = %s AND c.CountryCode = %s
         '''
         return pd.read_sql(query, self.conn, params=(search_date, country))
 
     def __del__(self):
         self.conn.close()
-
-# ... (keep the rest of the code unchanged)
-=======
-            WHERE p.EntryDate = ? AND c.CountryCode = ?
-        '''
-        return pd.read_sql_query(query, self.conn, params=(search_date, country))
-
-    def add_logo():
-        st.markdown(
-            """
-        <style>
-            [data-testid="stSidebarContent"] {
-                background-image: url(https://lever-client-logos.s3.amazonaws.com/5d04777b-cdde-4bc0-9cee-a61a406921c7-1528214915992.png);
-                background-repeat: no-repeat;
-                background-size: 80%;
-                background-position: 20px 80px;
-                padding-top: 100px;
-            }
-        </style>
-        """,
-            unsafe_allow_html=True,
-        )
-    # add_logo()
-# Call add_logo function
-
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
 
 def main():
     pm = PriceManager()
@@ -342,8 +253,4 @@ def main():
                     st.info(f"No entries found for SKU {del_sku} in {country}")
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     main()
-=======
-    main()
->>>>>>> 7f68f514d1c4d07132c8c46c04810351863ab7b9
